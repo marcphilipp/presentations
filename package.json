@@ -1,0 +1,20 @@
+{
+  "name": "presentations",
+  "version": "0.0.1",
+  "description": "Slides for various talks",
+  "scripts": {
+    "serve": "reveal-md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marcphilipp/presentations"
+  },
+  "keywords": [
+    "slides"
+  ],
+  "author": "Marc Philipp",
+  "license": "CC-BY-NC-SA-4.0",
+  "dependencies": {
+    "reveal-md": "^0.4.1"
+  }
+}

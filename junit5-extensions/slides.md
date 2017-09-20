@@ -19,7 +19,7 @@ revealOptions:
 
 ## JUnit 5 is released!
 
-Release date: **TBD**
+Release date: *September 10, 2017*
 
 ----
 
@@ -27,14 +27,14 @@ Release date: **TBD**
 
 JUnit 5 = Jupiter + Vintage + Platform
 
-![JUnit 5 Architecture](junit5-architecture-big-picture.svg)
+![JUnit 5 Architecture](/assets/junit5-extensions/junit5-architecture-big-picture.svg)
 <!-- .element class="plain" style="width:65%" -->
 
 ----
 
 ## JUnit Jupiter
 
-![JUnit Jupiter Modules](junit5-jupiter-modules.svg)
+![JUnit Jupiter Modules](/assets/junit5-extensions/junit5-jupiter-modules.svg)
 <!-- .element class="plain" style="width:50%" -->
 
 ----

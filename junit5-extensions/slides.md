@@ -98,6 +98,10 @@ class MyCustomExtension
 
 ## Demo
 
+----
+
+## Lessons Learned
+
 * How to implement custom logic to determine whether a test class/method should be skipped?
 * How to use *global* extension registration?
 * How to deactivate a condition without changing the code using system properties?
@@ -109,6 +113,10 @@ class MyCustomExtension
 ----
 
 ## Demo
+
+----
+
+## Lessons Learned
 
 * Using Lifecycle Callbacks to enable reuse of common setup/teardown code
 * Relative Execution Order of User Code and Extensions
@@ -123,6 +131,10 @@ class MyCustomExtension
 
 ## Demo
 
+----
+
+## Lessons Learned
+
 * How to catch exceptions thrown by tests and add information to them?
 
 ---
@@ -132,6 +144,10 @@ class MyCustomExtension
 ----
 
 ## Demo
+
+----
+
+## Lessons Learned
 
 * How to resolve test method parameters in an `Extension`?
 * Injecting parameters into test class constructors
@@ -145,6 +161,10 @@ class MyCustomExtension
 
 ## Demo
 
+----
+
+## Lessons Learned
+
 * Difference between `Extensions` and `TestExecutionListeners`: When to use which?
 * `TestExecutionListener` registration via `ServiceLoader`
 
@@ -156,6 +176,10 @@ class MyCustomExtension
 
 ## Demo
 
+----
+
+## Lessons Learned
+
 * How to use Parameterized Tests?
 * Writing a custom source that loads data from a database
 
@@ -166,6 +190,10 @@ class MyCustomExtension
 ----
 
 ## Demo
+
+----
+
+## Lessons Learned
 
 * How to execute a test multiple times with different contexts?
 * Executing a `@TestTemplate` without a registered invocation context provider

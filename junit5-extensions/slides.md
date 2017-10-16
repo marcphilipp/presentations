@@ -206,30 +206,6 @@ class MyCustomExtension
 
 ----
 
-## Extension Points (1/2)
-
-- Conditional Test Execution
-    - ExecutionCondition
-- General Purpose
-    - TestInstancePostProcessor
-    - ParameterResolver
-    - TestTemplateInvocationContext-Provider
-
-----
-
-## Extension Points (2/2)
-
-- Test Lifecycle Callbacks
-    - BeforeAllCallback
-        - BeforeEachCallback
-            - BeforeTestExecutionCallback
-                - TestExecutionExceptionHandler
-            - AfterTestExecutionCallback
-        - AfterEachCallback
-    - AfterAllCallback
-
-----
-
 ## JUnit Jupiter is extensible
 
 - A lot of extension points to choose from

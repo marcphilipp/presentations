@@ -232,7 +232,7 @@ class MyCustomExtension
 
 ## JUnit Jupiter is extensible
 
-- A lot of extension points to chose from
+- A lot of extension points to choose from
 - Combining them in one extension is very powerful
 - The JUnit team will add more in future releases
 

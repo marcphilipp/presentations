@@ -125,20 +125,6 @@ class MyCustomExtension
 
 ---
 
-# Enriching Exceptions
-
-----
-
-## Demo
-
-----
-
-## Lessons Learned
-
-* How to catch exceptions thrown by tests and add information to them?
-
----
-
 # Resolving Test Parameters
 
 ----

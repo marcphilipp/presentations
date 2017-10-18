@@ -119,9 +119,8 @@ class MyCustomExtension
 ## Lessons Learned
 
 * Using Lifecycle Callbacks to enable reuse of common setup/teardown code
-* Relative Execution Order of User Code and Extensions
 * Implementing multiple `Extension` interfaces in a single extension
-* How to store extension state for later retrieval
+* Using the `Store` class for extension state
 
 ---
 
@@ -136,23 +135,7 @@ class MyCustomExtension
 ## Lessons Learned
 
 * How to resolve test method parameters in an `Extension`?
-* Injecting parameters into test class constructors
-* Injecting parameters into `@BeforeEach`/`@AfterEach` methods
-
----
-
-# Custom Reporting
-
-----
-
-## Demo
-
-----
-
-## Lessons Learned
-
-* Difference between `Extensions` and `TestExecutionListeners`: When to use which?
-* `TestExecutionListener` registration via `ServiceLoader`
+* You can also inject parameters into test class constructors and `@BeforeEach`/`@AfterEach` methods
 
 ---
 
@@ -167,7 +150,7 @@ class MyCustomExtension
 ## Lessons Learned
 
 * How to use Parameterized Tests?
-* Writing a custom source that loads data from a database
+* Writing a custom source that loads data from a JSON file, ...
 
 ---
 
@@ -182,9 +165,8 @@ class MyCustomExtension
 ## Lessons Learned
 
 * How to execute a test multiple times with different contexts?
-* Executing a `@TestTemplate` without a registered invocation context provider
-* Implementing a new `TestInvocationContextProvider`
-* Using support classes to scan for custom annotations
+* How to implement a `TestInvocationContextProvider`
+* Using `AnnotationSupport` to scan for custom annotations
 
 ---
 
@@ -195,8 +177,8 @@ class MyCustomExtension
 ## JUnit Jupiter is extensible
 
 - A lot of extension points to choose from
-- Combining them in one extension is very powerful
 - The JUnit team will add more in future releases
+- Combining multiple extension points in one extension is very powerful!
 
 ----
 

@@ -50,7 +50,7 @@ JUnit 5 = Jupiter + Vintage + Platform
 
 ```java
 import org.junit.jupiter.api.*;
-import static org.junit.jupiter.api.Asserions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 class SimpleTest {
     @Test

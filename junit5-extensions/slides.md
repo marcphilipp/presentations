@@ -23,12 +23,8 @@ Release date: *September 10, 2017*
 
 ----
 
-## JUnit 5 Architecture
-
-JUnit 5 = JUnit&nbsp;Jupiter +&nbsp;JUnit&nbsp;Vintage +&nbsp;JUnit&nbsp;Platform
-
 ![JUnit 5 Architecture](/assets/junit5-extensions/junit5-architecture-big-picture.svg)
-<!-- .element class="plain" style="width:55%" -->
+<!-- .element class="plain" style="width:100%" -->
 
 ----
 
@@ -201,3 +197,10 @@ class MyCustomExtension
   https://github.com/junit-team/junit5/
 * Twitter:
   https://twitter.com/junitteam
+
+----
+
+## Thank you!
+
+Example code:  
+https://github.com/marcphilipp/junit5-extensions-demo

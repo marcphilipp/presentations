@@ -4,7 +4,7 @@
     font-size: 36px;
 }
 .reveal li {
-    margin-top:.2em;
+    margin-top:.5em;
 }
 .reveal, .reveal h1,
 .reveal h2,
@@ -23,7 +23,7 @@
     padding-bottom: 0.2em;
     font-size: 85%;
     background-color: rgba(27,31,35,0.05);
-    border-radius: 3px;
+    border-radius: 7px;
 }
 .reveal :not(pre) > code::before, .reveal :not(pre) > code::after {
     letter-spacing: -0.2em;

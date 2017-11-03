@@ -96,6 +96,20 @@ class MyCustomExtension
 
 ----
 
+## Extension Context
+
+* Represents the current node in the test tree, e.g. test method or class
+* Provides access to meta information about such a node, e.g. display name, method, class
+
+----
+
+## Extension Context
+
+![Extension Context](/assets/junit5-extensions/extension-context.svg)
+<!-- .element class="plain" style="width:100%;" -->
+
+----
+
 ## Lessons Learned
 
 * How to implement custom logic to determine whether a test class/method should be skipped?
@@ -112,11 +126,34 @@ class MyCustomExtension
 
 ----
 
+## Why the Store abstraction?
+
+* Methods within an extension need to save and retrieve data, e.g. to cleanup in the end
+* `Extensions` are instantiated once and called for multiple tests
+* Using instance variables would be error-prone
+
+----
+
+## Store
+
+* `Map`-like interface for extensions to save and retrieve data, e.g. `store.put(key, value)`
+* Accessed via a `Namespace`: Enables sharing data across extensions, but makes it a deliberate decision (e.g. `Namespace.GLOBAL`)
+* Reading from a `Store` follows the hierarchy upwards, if a key is not found
+
+----
+
+## Store
+
+![Store](/assets/junit5-extensions/store.svg)
+<!-- .element class="plain" style="width:100%;" -->
+
+----
+
 ## Lessons Learned
 
+* Using the `Store` class for extension state
 * Using Lifecycle Callbacks to enable reuse of common setup/teardown code
 * Implementing multiple `Extension` interfaces in a single extension
-* Using the `Store` class for extension state
 
 ---
 
@@ -135,7 +172,7 @@ class MyCustomExtension
 
 ---
 
-# Custom Sources for Parameterized Tests
+# Providing Arguments for Parameterized Tests
 
 ----
 
@@ -146,7 +183,7 @@ class MyCustomExtension
 ## Lessons Learned
 
 * How to use Parameterized Tests?
-* Writing a custom source that loads data from a JSON file, ...
+* Writing a custom `ArgumentsProvider` that loads data from a JSON file, ...
 
 ---
 
@@ -162,7 +199,15 @@ class MyCustomExtension
 
 * How to execute a test multiple times with different contexts?
 * How to implement a `TestInvocationContextProvider`
-* Using `AnnotationSupport` to scan for custom annotations
+
+----
+
+## Support Classes
+
+Package `org.junit.platform.commons.support` contains:
+
+* `AnnotationSupport` to scan for custom annotations, including meta-annotations
+* `ReflectionSupport` for classpath scanning, finding methods, invoking them etc.
 
 ---
 

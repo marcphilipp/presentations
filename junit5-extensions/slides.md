@@ -13,6 +13,19 @@ revealOptions:
 
 # JUnit 5 Extensions
 
+----
+
+## ![Marc Philipp](/assets/junit5-extensions/marc-philipp.jpg) <!-- .element style="width:30%; float:right;" --> Marc Philipp
+
+*Software Engineer @ LogMeIn
+in Karlsruhe, Germany*
+
+JUnit Maintainer since 2012
+
+*Twitter:* @marcphilipp
+
+*Web:* [marcphilipp.de](http://www.marcphilipp.de)
+
 ---
 
 # 🎉

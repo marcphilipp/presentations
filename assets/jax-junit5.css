@@ -1,0 +1,13 @@
+@import url("junit5.css");
+
+body:before {
+    content: "";
+    background: url(jax-logo.svg) no-repeat 0 0;
+    background-size: 100%;
+    display: inline-block;
+    width: 8em;
+    height: 5.5em;
+    position: fixed;
+    bottom: 3.5em;
+    right: 3.5em;
+}

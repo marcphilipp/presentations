@@ -2,7 +2,7 @@
 title: JUnit 5 Extensions
 theme: white
 highlightTheme: darcula
-css: junit5-extensions/junit5.css
+css: /assets/junit5.css
 revealOptions:
     slideNumber: true
     controls: false
@@ -15,7 +15,7 @@ revealOptions:
 
 ----
 
-## ![Marc Philipp](/assets/junit5-extensions/marc-philipp.jpg) <!-- .element style="width:30%; float:right;" --> Marc Philipp
+## ![Marc Philipp](/assets/marc-philipp.jpg) <!-- .element style="width:30%; float:right;" --> Marc Philipp
 
 *Software Engineer @ LogMeIn
 in Karlsruhe, Germany*
@@ -36,14 +36,14 @@ Release date: *September 10, 2017*
 
 ----
 
-![JUnit 5 Architecture](/assets/junit5-extensions/junit5-architecture-big-picture.svg)
+![JUnit 5 Architecture](junit5-architecture-big-picture.svg)
 <!-- .element class="plain" style="width:100%" -->
 
 ----
 
 ## JUnit Jupiter
 
-![JUnit Jupiter Modules](/assets/junit5-extensions/junit5-jupiter-modules.svg)
+![JUnit Jupiter Modules](junit5-jupiter-modules.svg)
 <!-- .element class="plain" style="width:50%" -->
 
 ----
@@ -118,7 +118,7 @@ class MyCustomExtension
 
 ## Extension Context
 
-![Extension Context](/assets/junit5-extensions/extension-context.svg)
+![Extension Context](extension-context.svg)
 <!-- .element class="plain" style="width:100%;" -->
 
 ----
@@ -157,7 +157,7 @@ class MyCustomExtension
 
 ## Store
 
-![Store](/assets/junit5-extensions/store.svg)
+![Store](store.svg)
 <!-- .element class="plain" style="width:100%;" -->
 
 ----
@@ -238,20 +238,20 @@ Package `org.junit.platform.commons.support` contains:
 
 ## Getting Started
 
-* User Guide:  
+* User Guide:
   http://junit.org/junit5/docs/current/user-guide/
-* Sample projects for Gradle and Maven:  
+* Sample projects for Gradle and Maven:
   https://github.com/junit-team/junit5-samples
-* Javadoc:  
+* Javadoc:
   http://junit.org/junit5/docs/current/api/
 
 ----
 
 ## Wanted: Feedback!
 
-* StackOverflow:  
+* StackOverflow:
   http://stackoverflow.com/questions/tagged/junit5
-* Code & Issues:  
+* Code & Issues:
   https://github.com/junit-team/junit5/
 * Twitter:
   https://twitter.com/junitteam
@@ -260,5 +260,5 @@ Package `org.junit.platform.commons.support` contains:
 
 ## Thank you!
 
-Example code:  
+Example code:
 https://github.com/marcphilipp/junit5-extensions-demo

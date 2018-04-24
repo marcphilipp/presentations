@@ -125,6 +125,20 @@ https://github.com/marcphilipp/junit5-demo/tree/20180425-jax
 
 ----
 
+## Composed Annotations
+
+You can combine Jupiter annotations by meta-annotating your own annotation.
+
+```java
+@Retention(RUNTIME)
+@Target(METHOD)
+@ExtendWith(ConferenceExecutionCondition.class)
+@Tag("example")
+public @interface DisabledOnConference {}
+```
+
+----
+
 ## Extension Points
 
 - Lifecycle: `BeforeAllCallback`, `BeforeEachCallback`, `BeforeTestExecutionCallback`, `TestExecutionExceptionHandler`, `AfterTestExecutionCallback`, `AfterEachCallback`, `AfterAllCallback`
@@ -166,9 +180,22 @@ Image: NASA <!-- .element style="font-size: 10px; color:white" -->
   - for other testing frameworks
 - Closely coupled (internal APIs, reflection, serialization)
 
+![JUnit 4 Usage](junit4-usage.svg)
+<!-- .element class="plain" style="height:7em" -->
+
+
 ----
 
 ## Coupling
+
+![Serialization Bug](serialization-bug.png)
+<!-- .element class="plain" style="width:100%" -->
+
+----
+
+# 💡
+
+> JUnit is a Platform --- let's design for it!
 
 ----
 
@@ -178,6 +205,15 @@ Image: NASA <!-- .element style="font-size: 10px; color:white" -->
 1. Extensible mechanisms to discover and execute tests (Test Engine SPI)
 1. An API for test execution by tools (Launcher API)
 
+
+----
+
+## Design Goals
+
+- *Flexibility:* Adding new features should be easy. It should be clear whether a change might potentially break a client.
+- *Backward Compatibility:* Test written with JUnit 3 and 4 should still run
+- *Forward Compatibility:* Old IDEs and build tools should be able to execute new tests
+
 ----
 
 ![JUnit 5 Architecture](junit5-architecture-big-picture.svg)
@@ -185,39 +221,62 @@ Image: NASA <!-- .element style="font-size: 10px; color:white" -->
 
 ----
 
-## Third-party Engines
+## JUnit 5
+## =
+## Jupiter + Vintage + Platform
 
 ----
 
-## Vintage Engine
+## Third-party Engines
+
+Specsy, Spek, KotlinTest, Cucumber, Drools, jqwik, ...
+
+<https://github.com/junit-team/junit5/wiki/Third-party-Extensions>
+
+> Talk about **jqwik** by [@johanneslink](https://twitter.com/johanneslink)
+> 👉 11:45 in Gutenberg 1 👈
+
+----
+
+## Compatibility / Migration
+
+- Vintage Engine to run JUnit 3/4 tests on the Platform
+- `@Category(UI.class)` maps to `com.acme.UI` tag
+- Limited support for JUnit 4 `Rules` to ease migration
+- IDEs provide tools to convert test classes to Jupiter API
+- Community-provided migration tool:
+  <https://github.com/boyarsky/convert-junit4-to-junit5>
 
 ----
 
 ## Build Tool Support
 
-Demo?
-
-----
-
-## Console Launcher
-
-?
+- Native support in Gradle (≥ 4.6) and Ant (≥ 1.10.3)
+- Support for Maven Surefire/Failsafe via a custom provider (currently being donated to Apache)
+- `ConsoleLauncher` to run tests from the command line
 
 ----
 
 ## IDE Support
 
+- Excellent support
+  - IntelliJ IDEA (≥ 2016.2)
+  - Eclipse (≥ 4.7.1a)
+  - Visual Studio Code (Java Test Runner ≥ 0.4.0)
+- For other tools, there's `@RunWith(JUnitPlatform)`
+
 ----
 
-## Compatibility
+## Using multiple Engines (Demo)
 
-Demo?
+- Show dependencies
+- Show tests
+- Run with IDEA
+- Run with Gradle
 
 ----
 
-## Migration Path
-
-Demo?
+## Using multiple Engines (Recap)
 
 ----
 

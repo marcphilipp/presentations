@@ -270,14 +270,15 @@ Specsy, Spek, KotlinTest, Cucumber, Drools, jqwik, ...
 
 ## Using multiple Engines (Demo)
 
-- Show dependencies
-- Show tests
-- Run with IDEA
-- Run with Gradle
+<https://github.com/marcphilipp/junit5-platform-demo>
 
 ----
 
 ## Using multiple Engines (Recap)
+
+- Multiple test engines can be used in a single test run
+- Distinction between `testCompile` and `testRuntime` dependencies
+- Allows to gradually migrate tests from one test engine to another (e.g. from Vintage to Jupiter)
 
 ----
 

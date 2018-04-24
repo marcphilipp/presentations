@@ -4,6 +4,7 @@ theme: white
 highlightTheme: atom-one-light
 css: /assets/jax-junit5.css
 revealOptions:
+    transition: zoom
     slideNumber: false
     controls: false
     markdown:
@@ -201,7 +202,7 @@ Image: NASA <!-- .element style="font-size: 10px; color:white" -->
 
 ## Separation of Concerns
 
-1. An API to write tests (Jupiter API)
+1. An API to write tests and extensions (Jupiter API)
 1. Extensible mechanisms to discover and execute tests (Test Engine SPI)
 1. An API for test execution by tools (Launcher API)
 
@@ -332,6 +333,6 @@ Image: NASA <!-- .element style="font-size: 10px; color:white" -->
 ## Thank you!
 
 Example code:
-https://github.com/marcphilipp/junit5-demo
+https://github.com/marcphilipp/junit5-demo/tree/20180425-jax
 
 [@marcphilipp](https://twitter.com/marcphilipp)

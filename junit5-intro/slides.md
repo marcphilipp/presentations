@@ -331,9 +331,21 @@ Image: NASA <!-- .element style="font-size: 10px; color:white" -->
 
 ----
 
-## Thank you!
+## Example code
 
-Example code:
-https://github.com/marcphilipp/junit5-demo/tree/20180425-jax
+* Jupiter:
+  https://github.com/marcphilipp/junit5-demo/tree/20180425-jax
+* Platform:
+  https://github.com/marcphilipp/junit5-platform-demo
 
-[@marcphilipp](https://twitter.com/marcphilipp)
+----
+
+# Questions?
+
+&nbsp;
+
+[@marcphilipp](https://twitter.com/marcphilipp) from [@junitteam](https://twitter.com/junitteam)
+
+----
+
+# Thanks!

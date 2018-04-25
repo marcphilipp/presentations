@@ -11,5 +11,11 @@ This repo contains my [reveal-md](https://github.com/webpro/reveal-md) slides fo
 ```sh
 nvm install
 npm install
-npm run serve // opens browser at http://localhost:1948
+npm run watch // or "serve" instead of "watch", opens browser at http://localhost:1948
+```
+
+## Generating PDF
+
+```sh
+`npm bin`/decktape --size 1920x1080 http://localhost:1948/$PRESENTATION/slides.md $PRESENTATION.pdf
 ```

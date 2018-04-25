@@ -1,10 +1,11 @@
 ---
 title: JUnit 5 Extensions
 theme: white
-highlightTheme: darcula
+highlightTheme: atom-one-light
 css: /assets/junit5.css
 revealOptions:
-    slideNumber: true
+    transition: zoom
+    slideNumber: false
     controls: false
     markdown:
         smartypants: true
@@ -17,22 +18,25 @@ revealOptions:
 
 ## ![Marc Philipp](/assets/marc-philipp.jpg) <!-- .element style="width:30%; float:right;" --> Marc Philipp
 
-*Software Engineer @ LogMeIn
-in Karlsruhe, Germany*
+*Software Engineer at ![Gradle](/assets/gradle.svg) <!-- .element class="plain" style="vertical-align: -35px; height:2em;" -->*
 
 JUnit Maintainer since 2012
 
-*Twitter:* @marcphilipp
-
-*Web:* [marcphilipp.de](http://www.marcphilipp.de)
+*Twitter:* [@marcphilipp](https://twitter.com/marcphilipp)
+*Web:* [marcphilipp.de](https://www.marcphilipp.de)
 
 ---
 
-# 🎉
+## 🎉<br>JUnit 5 is here!
 
-## JUnit 5 is released!
+**5.0**
+September 10, 2017
 
-Release date: *September 10, 2017*
+**5.1**
+February 18, 2018
+
+**5.2**
+April 29, 2018
 
 ----
 
@@ -240,7 +244,7 @@ Package `org.junit.platform.commons.support` contains:
 
 * User Guide:
   http://junit.org/junit5/docs/current/user-guide/
-* Sample projects for Gradle and Maven:
+* Sample projects for Gradle, Maven, and Ant:
   https://github.com/junit-team/junit5-samples
 * Javadoc:
   http://junit.org/junit5/docs/current/api/
@@ -258,7 +262,18 @@ Package `org.junit.platform.commons.support` contains:
 
 ----
 
-## Thank you!
+## Example code
 
-Example code:
 https://github.com/marcphilipp/junit5-extensions-demo
+
+----
+
+# Questions?
+
+&nbsp;
+
+👉 [@marcphilipp](https://twitter.com/marcphilipp) or [@junitteam](https://twitter.com/junitteam)
+
+----
+
+# Thanks!

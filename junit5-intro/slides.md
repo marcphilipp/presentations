@@ -32,6 +32,13 @@ JUnit Maintainer since 2012
 
 ----
 
+# ✋
+
+## Show of Hands
+
+
+----
+
 ## 🎉<br>JUnit 5 is here!
 
 **5.0**
@@ -85,6 +92,7 @@ https://github.com/marcphilipp/junit5-demo/tree/20180425-jax
 ## Basics (Recap)
 
 - `@Test` is still a thing, but in `org.junit.jupiter.api`
+- `@Disabled` instead of `@Ignore`
 - `@BeforeAll`, `@BeforeEach`, `@AfterEach`, `@AfterAll` have new names
 - `Assertions` look similar -- a few new ones like `assertThrows`, `assertAll`
 - Custom `@DisplayNames` to ease camel-case fatigue
@@ -128,7 +136,7 @@ https://github.com/marcphilipp/junit5-demo/tree/20180425-jax
 
 ## Composed Annotations
 
-You can combine Jupiter annotations by meta-annotating your own annotation.
+You can use Jupiter annotations as meta-annotations to create your own annotations.
 
 ```java
 @Retention(RUNTIME)
@@ -196,7 +204,7 @@ Image: NASA <!-- .element style="font-size: 10px; color:white" -->
 
 # 💡
 
-> JUnit is a Platform --- let's design for it!
+> If JUnit is a platform, let's design for it!
 
 ----
 
@@ -305,7 +313,7 @@ Image: NASA <!-- .element style="font-size: 10px; color:white" -->
 - New reporting format to support new features
 - Parameterized Classes
 - Scenario Tests
-- ...
+- _Your ideas?_
 
 ----
 
@@ -344,7 +352,7 @@ Image: NASA <!-- .element style="font-size: 10px; color:white" -->
 
 &nbsp;
 
-[@marcphilipp](https://twitter.com/marcphilipp) from [@junitteam](https://twitter.com/junitteam)
+👉 [@marcphilipp](https://twitter.com/marcphilipp) or [@junitteam](https://twitter.com/junitteam)
 
 ----
 

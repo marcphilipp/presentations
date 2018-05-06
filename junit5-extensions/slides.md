@@ -106,9 +106,9 @@ class MyCustomExtension
 
 ## Extension Registration
 
-- *Declarative:* Annotate your test classes or methods with `@ExtendWith` to register extensions
-    - May be used as a meta-annotation
-- *Global:* Opt-in support for registration via ServiceLoader
+- Declarative: `@ExtendWith` on classes or methods
+- Programmatic: `@RegisterExtension` on fields
+- Global: Via `ServiceLoader` (see [User Guide](https://junit.org/junit5/docs/current/user-guide/#extensions-registration-automatic))
 
 ---
 

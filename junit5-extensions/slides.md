@@ -2,7 +2,7 @@
 title: JUnit 5 Extensions
 theme: white
 highlightTheme: atom-one-light
-css: /assets/junit5.css
+css: /assets/geecon-junit5.css
 revealOptions:
     transition: zoom
     slideNumber: false
@@ -12,7 +12,14 @@ revealOptions:
         breaks: true
 ---
 
+<!-- .slide: data-background="./geecon-background.jpg" -->
 # JUnit 5 Extensions
+<!-- .element style="color:white" -->
+
+<hr style="border-color:white; width:25%;">
+
+## Marc Philipp
+<!-- .element style="color:white" -->
 
 ----
 

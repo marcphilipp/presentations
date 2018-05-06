@@ -36,3 +36,7 @@ body:after {
     bottom: 3.5em;
     left: 3.5em;
 }
+
+hr {
+    border: 1px solid black;
+}

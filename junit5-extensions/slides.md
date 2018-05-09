@@ -136,9 +136,9 @@ class MyCustomExtension
 
 ## Lessons Learned
 
-* How to implement custom logic to determine whether a test class/method should be skipped?
-* How to use *global* extension registration?
-* How to deactivate a condition without changing the code using system properties?
+* Using custom logic to determine whether a test class/method should be skipped
+* Registering an extension *globally*
+* Deactivating a condition without changing the code
 
 ---
 
@@ -152,7 +152,13 @@ class MyCustomExtension
 
 ## Why the Store abstraction?
 
-* Methods within an extension need to save and retrieve data, e.g. to cleanup in the end
+```java
+extensionContext
+    .getStore(Namespace.create(...))
+    .getOrComputeIfAbsent("key", key -> ...)
+```
+
+* An extension needs to save and retrieve data, e.g. to clean up in the end
 * `Extensions` are instantiated once and called for multiple tests
 * Using instance variables would be error-prone
 
@@ -170,6 +176,29 @@ class MyCustomExtension
 
 ![Store](store.svg)
 <!-- .element class="plain" style="width:100%;" -->
+
+----
+
+## Automatic Clean-Up
+
+`CloseableResource` instances in a `Store` are automatically closed when the scope of the corresponding `ExtensionContext` ends.
+
+```java
+class DockerClientResource implements CloseableResource {
+    private final DockerClient dockerClient;
+
+    DockerClientResource() {
+        var config = DefaultDockerClientConfig.createDefaultConfigBuilder().build();
+        dockerClient = DockerClientBuilder.getInstance(config).build();
+    }
+    DockerClient get() {
+        return dockerClient;
+    }
+    @Override public void close() throws Throwable {
+        dockerClient.close();
+    }
+}
+```
 
 ----
 
@@ -192,7 +221,7 @@ class MyCustomExtension
 ## Lessons Learned
 
 * How to resolve test method parameters in an `Extension`?
-* You can also inject parameters into test class constructors and `@BeforeEach`/`@AfterEach` methods
+* You can also inject parameters into test class constructors and `@BeforeEach`/`@AfterEach` methods etc.
 
 ---
 
@@ -206,7 +235,7 @@ class MyCustomExtension
 
 ## Lessons Learned
 
-* How to use Parameterized Tests?
+* Using Parameterized Tests
 * Writing a custom `ArgumentsProvider` that loads data from a JSON file, ...
 
 ---
@@ -221,8 +250,8 @@ class MyCustomExtension
 
 ## Lessons Learned
 
-* How to execute a test multiple times with different contexts?
-* How to implement a `TestInvocationContextProvider`
+* Executing a test multiple times with different contexts
+* Implementing a `TestInvocationContextProvider`
 
 ----
 
@@ -239,11 +268,26 @@ Package `org.junit.platform.commons.support` contains:
 
 ----
 
+## Extension Points
+
+- Lifecycle: `BeforeAllCallback`, `BeforeEachCallback` ✅, `BeforeTestExecutionCallback`, `TestExecutionExceptionHandler`, `AfterTestExecutionCallback`, `AfterEachCallback` ✅, `AfterAllCallback`
+- Other: `ExecutionCondition` ✅, `TestInstancePostProcessor`, `ParameterResolver` ✅, `TestTemplateInvocationContextProvider` ✅
+
+----
+
 ## JUnit Jupiter is extensible
 
 - A lot of extension points to choose from
 - The JUnit team will add more in future releases
 - Combining multiple extension points in one extension is very powerful!
+
+----
+
+## Third-Party Extensions
+
+Spring, Mockito, Docker, Wiremock, JPA, Selenium/WebDriver, DbUnit, Kafka, Jersey, GreenMail, S3Mock, Citrus Framework, XWiki, ...
+
+<https://github.com/junit-team/junit5/wiki/Third-party-Extensions>
 
 ----
 

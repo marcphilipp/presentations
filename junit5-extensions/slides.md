@@ -47,6 +47,12 @@ April 29, 2018
 
 ----
 
+# ✋
+
+## Show of Hands
+
+----
+
 ![JUnit 5 Architecture](junit5-architecture-big-picture.svg)
 <!-- .element class="plain" style="width:100%" -->
 
@@ -75,7 +81,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class SimpleTest {
     @Test
     @DisplayName("1 + 1 = 2")
-    @ExtendWith(MyCustomExtension.class)
     void onePlusOneEqualsTwo() {
         assertEquals(2, 1 + 1);
     }
@@ -108,7 +113,30 @@ class MyCustomExtension
 
 - Declarative: `@ExtendWith` on classes or methods
 - Programmatic: `@RegisterExtension` on fields
-- Global: Via `ServiceLoader` (see [User Guide](https://junit.org/junit5/docs/current/user-guide/#extensions-registration-automatic))
+- Global: via `ServiceLoader`
+- You can register as many extensions as you need simultaneously
+
+----
+
+## Programming Model meets Extension Model
+
+```java
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+@ExtendWith(MyCustomExtension.class)
+class SimpleTest {
+
+    @RegisterExtension Extension myExtension = new AnotherExtension(42);
+
+    @Test
+    @ExtendWith({FooExtension.class, BarExtension.class})
+    void onePlusOneEqualsTwo() {
+        assertEquals(2, 1 + 1);
+    }
+}
+```
 
 ---
 
@@ -117,6 +145,8 @@ class MyCustomExtension
 ----
 
 ## Demo
+
+https://github.com/marcphilipp/junit5-extensions-demo
 
 ----
 
@@ -147,6 +177,8 @@ class MyCustomExtension
 ----
 
 ## Demo
+
+https://github.com/marcphilipp/junit5-extensions-demo
 
 ----
 
@@ -216,6 +248,8 @@ class DockerClientResource implements CloseableResource {
 
 ## Demo
 
+https://github.com/marcphilipp/junit5-extensions-demo
+
 ----
 
 ## Lessons Learned
@@ -231,6 +265,8 @@ class DockerClientResource implements CloseableResource {
 
 ## Demo
 
+https://github.com/marcphilipp/junit5-extensions-demo
+
 ----
 
 ## Lessons Learned
@@ -245,6 +281,8 @@ class DockerClientResource implements CloseableResource {
 ----
 
 ## Demo
+
+https://github.com/marcphilipp/junit5-extensions-demo
 
 ----
 

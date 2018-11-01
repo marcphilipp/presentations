@@ -31,10 +31,15 @@
 }
 
 body:after {
-    content: url(junit5-logo.svg);
+    content: "";
+    background: url(junit5-logo.svg) no-repeat bottom;
+    background-size: 100%;
+    display: inline-block;
+    width: 7%;
+    height: 100%;
     position: fixed;
-    bottom: 3.5em;
-    left: 3.5em;
+    bottom: 3%;
+    left: 3%;
 }
 
 hr {

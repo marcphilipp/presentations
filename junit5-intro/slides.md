@@ -2,7 +2,7 @@
 title: JUnit 5
 theme: white
 highlightTheme: atom-one-light
-css: /assets/jax-junit5.css
+css: /assets/wjax-junit5.css
 revealOptions:
     transition: zoom
     slideNumber: false
@@ -12,11 +12,11 @@ revealOptions:
         breaks: true
 ---
 
-<!-- .slide: data-background="./jax-background.jpg" -->
+<!-- .slide: data-background="/assets/wjax-background.png" -->
 # JUnit 5
-<!-- .element style="color:white; margin-top:2.2em" -->
+<!-- .element style="color:white; margin-top:1em" -->
 
-#### The new Testing Framework for Java<br>and Platform for the JVM
+#### More than just a <br> Testing Framework for Java
 <!-- .element style="color:white" -->
 
 ----
@@ -48,7 +48,10 @@ September 10, 2017
 February 18, 2018
 
 **5.2**
-*April 29, 2018*
+April 29, 2018
+
+**5.3**
+September 11, 2018
 
 ----
 
@@ -85,7 +88,7 @@ Nope, it's just a new name so we can easily distinguish it from the old JUnit an
 
 ## Basics (Demo)
 
-https://github.com/marcphilipp/junit5-demo/tree/20180425-jax
+https://github.com/marcphilipp/junit5-demo/tree/20181107-wjax
 
 ----
 
@@ -103,7 +106,7 @@ https://github.com/marcphilipp/junit5-demo/tree/20180425-jax
 
 ## More ways to test (Demo)
 
-https://github.com/marcphilipp/junit5-demo/tree/20180425-jax
+https://github.com/marcphilipp/junit5-demo/tree/20181107-wjax
 
 ----
 
@@ -118,7 +121,7 @@ https://github.com/marcphilipp/junit5-demo/tree/20180425-jax
 
 ## Extensions (Demo)
 
-https://github.com/marcphilipp/junit5-demo/tree/20180425-jax
+https://github.com/marcphilipp/junit5-demo/tree/20181107-wjax
 
 ----
 
@@ -151,7 +154,7 @@ public @interface DisabledOnConference {}
 ## Extension Points
 
 - Lifecycle: `BeforeAllCallback`, `BeforeEachCallback`, `BeforeTestExecutionCallback`, `TestExecutionExceptionHandler`, `AfterTestExecutionCallback`, `AfterEachCallback`, `AfterAllCallback`
-- Other: `ExecutionCondition`, `TestInstancePostProcessor`, `ParameterResolver`, `TestTemplateInvocationContextProvider`
+- Other: `ExecutionCondition`, `TestInstanceFactory`, `TestInstancePostProcessor`, `ParameterResolver`, `TestTemplateInvocationContextProvider`
 
 ----
 
@@ -242,9 +245,6 @@ Specsy, Spek, KotlinTest, Cucumber, Drools, jqwik, ...
 
 <https://github.com/junit-team/junit5/wiki/Third-party-Extensions>
 
-> Talk about **jqwik** by [@johanneslink](https://twitter.com/johanneslink)
-> 👉 11:45 in Gutenberg 1 👈
-
 ----
 
 ## Compatibility / Migration
@@ -252,6 +252,7 @@ Specsy, Spek, KotlinTest, Cucumber, Drools, jqwik, ...
 - Vintage Engine to run JUnit 3/4 tests on the Platform
 - `@Category(UI.class)` maps to `com.acme.UI` tag
 - Limited support for JUnit 4 `Rules` to ease migration
+- Migration support for `@Ignore` (will be in 5.4)
 - IDEs provide tools to convert test classes to Jupiter API
 - Community-provided migration tool:
   <https://github.com/boyarsky/convert-junit4-to-junit5>
@@ -260,9 +261,8 @@ Specsy, Spek, KotlinTest, Cucumber, Drools, jqwik, ...
 
 ## Build Tool Support
 
-- Native support in Gradle (≥ 4.6) and Ant (≥ 1.10.3)
-- Support for Maven Surefire/Failsafe via a custom provider (currently being donated to Apache)
-- `ConsoleLauncher` to run tests from the command line
+- Native support in Gradle (≥ 4.6), Ant (≥ 1.10.3), and Maven Surefire (≥ 2.22.0)
+- `ConsoleLauncher` to run tests from the command line or to support other build tools (e.g. Bazel)
 
 ----
 
@@ -272,6 +272,7 @@ Specsy, Spek, KotlinTest, Cucumber, Drools, jqwik, ...
   - IntelliJ IDEA (≥ 2016.2)
   - Eclipse (≥ 4.7.1a)
   - Visual Studio Code (Java Test Runner ≥ 0.4.0)
+  - Netbeans (will come with 10.0)
 - For other tools, there's `@RunWith(JUnitPlatform)`
 
 ----
@@ -285,7 +286,7 @@ Specsy, Spek, KotlinTest, Cucumber, Drools, jqwik, ...
 ## Using multiple Engines (Recap)
 
 - Multiple test engines can be used in a single test run
-- Distinction between `testCompile` and `testRuntime` dependencies
+- Distinction between `testImplementation` and `testRuntimeOnly` dependencies
 - Allows to gradually migrate tests from one test engine to another (e.g. from Vintage to Jupiter)
 
 ----
@@ -308,9 +309,8 @@ Image: NASA <!-- .element style="font-size: 10px; color:white" -->
 
 ## Important Future Milestones
 
-- Parallel test execution
-- Release of donated provider for Apache Maven Surefire
-- New reporting format to support new features
+- New reporting format thats supports new features
+- Declarative Test Suites
 - Parameterized Classes
 - Scenario Tests
 - _Your ideas?_
@@ -321,7 +321,7 @@ Image: NASA <!-- .element style="font-size: 10px; color:white" -->
 
 * User Guide:
   http://junit.org/junit5/docs/current/user-guide/
-* Sample projects for Gradle, Maven, and Ant:
+* Sample projects for Ant, Bazel, Gradle, and Maven:
   https://github.com/junit-team/junit5-samples
 * Javadoc:
   http://junit.org/junit5/docs/current/api/
@@ -334,15 +334,24 @@ Image: NASA <!-- .element style="font-size: 10px; color:white" -->
   http://stackoverflow.com/questions/tagged/junit5
 * Code & Issues:
   https://github.com/junit-team/junit5/
+* Gitter:
+  https://gitter.im/junit-team/junit5
 * Twitter:
   https://twitter.com/junitteam
+
+----
+
+## Donations
+
+Support the JUnit team with donations via Steady:
+  https://steadyhq.com/en/junit
 
 ----
 
 ## Example code
 
 * Jupiter:
-  https://github.com/marcphilipp/junit5-demo/tree/20180425-jax
+  https://github.com/marcphilipp/junit5-demo/tree/20181107-wjax
 * Platform:
   https://github.com/marcphilipp/junit5-platform-demo
 
@@ -352,7 +361,8 @@ Image: NASA <!-- .element style="font-size: 10px; color:white" -->
 
 &nbsp;
 
-👉 [@marcphilipp](https://twitter.com/marcphilipp) or [@junitteam](https://twitter.com/junitteam)
+👉 [@marcphilipp](https://twitter.com/marcphilipp) or [@junitteam](https://twitter.com/junitteam) 👈
+on Twitter
 
 ----
 

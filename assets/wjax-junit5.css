@@ -2,10 +2,10 @@
 
 body:before {
     content: "";
-    background: url(geecon.png) no-repeat bottom;
+    background: url(wjax-logo.png) no-repeat bottom;
     background-size: 100%;
     display: inline-block;
-    width: 7%;
+    width: 10%;
     height: 100%;
     position: fixed;
     bottom: 3%;

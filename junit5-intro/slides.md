@@ -309,7 +309,7 @@ Image: NASA <!-- .element style="font-size: 10px; color:white" -->
 
 ## Important Future Milestones
 
-- New reporting format thats supports new features
+- New reporting format that supports new features
 - Declarative Test Suites
 - Parameterized Classes
 - Scenario Tests

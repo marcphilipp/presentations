@@ -119,6 +119,21 @@ https://github.com/marcphilipp/junit5-demo/tree/20181107-wjax
 
 ----
 
+## Parallel Execution (Demo)
+
+https://github.com/marcphilipp/junit5-demo/tree/20181107-wjax
+
+----
+
+## Parallel Execution (Recap)
+
+- Tests are run sequentially by default
+- Opt-in and configure parallel execution via configuration parameters
+- `@Execution(SAME_THREAD` or `CONCURRENT)`
+- Use `@ResourceLock` as declarative synchronization mechanism
+
+----
+
 ## Extensions (Demo)
 
 https://github.com/marcphilipp/junit5-demo/tree/20181107-wjax

@@ -175,7 +175,7 @@ public @interface DisabledOnConference {}
 
 ## Third-Party Extensions
 
-Spring, Mockito, Docker, Wiremock, JPA, Selenium/WebDriver, DbUnit, Kafka, Jersey, GreenMail, S3Mock, Citrus Framework, XWiki, ...
+JUnit Pioneer, Spring, Mockito, Docker, Wiremock, JPA, Selenium/WebDriver, DbUnit, Kafka, Jersey, GreenMail, S3Mock, Citrus Framework, XWiki, ...
 
 <https://github.com/junit-team/junit5/wiki/Third-party-Extensions>
 
@@ -256,7 +256,7 @@ Image: NASA <!-- .element style="font-size: 10px; color:white" -->
 
 ## Third-party Engines
 
-Specsy, Spek, KotlinTest, Cucumber, Drools, jqwik, ...
+Specsy, Spek, KotlinTest, Cucumber, Drools, jqwik, Brahms, ...
 
 <https://github.com/junit-team/junit5/wiki/Third-party-Extensions>
 
@@ -324,9 +324,10 @@ Image: NASA <!-- .element style="font-size: 10px; color:white" -->
 
 ## Important Future Milestones
 
+- Test ordering (e.g. randomization) ✅ will be in 5.4
 - New reporting format that supports new features
 - Declarative Test Suites
-- Parameterized Classes
+- Parameterized Test Classes
 - Scenario Tests
 - _Your ideas?_
 

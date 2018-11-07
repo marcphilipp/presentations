@@ -175,7 +175,7 @@ public @interface DisabledOnConference {}
 
 ## Third-Party Extensions
 
-JUnit Pioneer, Spring, Mockito, Docker, Wiremock, JPA, Selenium/WebDriver, DbUnit, Kafka, Jersey, GreenMail, S3Mock, Citrus Framework, XWiki, ...
+JUnit Pioneer, Spring, Mockito, Testcontainers, Docker, Wiremock, JPA, Selenium/WebDriver, DbUnit, Kafka, Jersey, GreenMail, S3Mock, Citrus Framework, XWiki, ...
 
 <https://github.com/junit-team/junit5/wiki/Third-party-Extensions>
 

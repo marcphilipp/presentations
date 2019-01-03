@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Mono:400,700|Lato:100,100i,300,300i,400,400i,700,700i,900,900i&subset=latin-ext');
+
+.reveal {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    color: #02303A;
+}
+.reveal li {
+    margin-top:.5em;
+}
+section.has-dark-background h1,
+section.has-dark-background h2,
+section.has-dark-background h3,
+section.has-dark-background h4,
+section.has-dark-background h5,
+section.has-dark-background h6,
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+    font-family: 'Lato', sans-serif;
+    color: #00C489;
+}
+.reveal a, .reveal a:hover {
+    color: #00C489;
+}
+.reveal .progress span {
+    background: #23a1c7;
+}
+.reveal section img {
+    border: 4px solid #02303A;
+}
+.reveal code, .reveal pre {
+    font-family: 'Fira Mono', monospace;
+}
+.reveal :not(pre) > code {
+    padding: 0;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+    font-size: 85%;
+    background-color: rgba(27,31,35,0.05);
+    border-radius: 7px;
+}
+.reveal :not(pre) > code::before, .reveal :not(pre) > code::after {
+    letter-spacing: -0.25em;
+    content: "\00a0";
+}
+
+body:after {
+    content: "";
+    background: url(gradlephant.svg) no-repeat bottom;
+    background-size: 100%;
+    display: inline-block;
+    width: 7%;
+    height: 100%;
+    position: fixed;
+    bottom: 4%;
+    left: 3%;
+}

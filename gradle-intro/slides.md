@@ -51,7 +51,7 @@ JUnit Maintainer seit 2012
 
 ----
 
-## Plattformunabhängig
+## Vielseitig einsetzbar
 
 * Java-Ökosystem: Java, Groovy, Kotlin, Scala, ...
 * Native Projekte: C, C++, Swift, ...
@@ -88,7 +88,7 @@ JUnit Maintainer seit 2012
 * Inkrementelle Builds
 * Gradle Plugins
 * Build Scans
-* Build Cache
+* Build Cache und Gradle Enterprise
 
 ---
 <!-- .slide: data-background-color="#01303a" -->
@@ -240,9 +240,9 @@ plugins {
 }
 ```
 
-- Wenden andere Plugins an
 - Definieren Tasks, z.B. `compileJava`
 - Stellen Möglichkeiten zur Konfiguration bereit, z.B. die `application`-Extension
+- Wenden andere Plugins an
 
 ----
 
@@ -257,12 +257,30 @@ plugins {
 ```
 
 ```java
-public class MyPlugin extends Plugin<Gradle> {
+public class MyPlugin extends Plugin<Project> {
   @Override public void apply(Project project) {
     // ...
   }
 }
 ```
+
+----
+
+## Plugin Portal
+
+Über 3000 Community-Plugins
+
+![Plugin Portal](plugin-portal.png)
+<!-- .element class="plain" -->
+
+---
+
+<!-- .slide: data-background-color="#01303a" -->
+# Developer Productivity
+
+----
+
+## TODO
 
 ---
 <!-- .slide: data-background-color="#01303a" -->
@@ -270,9 +288,10 @@ public class MyPlugin extends Plugin<Gradle> {
 
 ----
 
-## Developer Productivity
+## Inkrementelle Builds
 
-TODO
+- Führe nur Tasks aus, die von Änderungen zwischen zwei Builds betroffen sind.
+- Behalte die Ergebnisdateien aller Tasks die up-to-date sind.
 
 ----
 
@@ -292,7 +311,7 @@ $ ./gradlew --console=plain build
 > Task :check
 > Task :build
 
-BUILD SUCCESSFUL in 1s
+BUILD SUCCESSFUL in 5s
 7 actionable tasks: 7 executed
 ```
 
@@ -362,7 +381,77 @@ https://gradle.com/s/lu7dxy7quyoju
 
 ---
 <!-- .slide: data-background-color="#01303a" -->
-# Build Cache
+# Gradle Enterprise
+
+----
+
+## Morgens halb 10 in Deutschland...
+
+```plain
+$ git pull
+[...]
+185 files changed, 4320 insertions(+), 1755 deletions(-)
+```
+
+```plain
+  $ ./gradlew --build-cache sanityCheck
+
+BUILD SUCCESSFUL in 1m 11s
+1338 actionable tasks: 238 executed, 1100 from cache
+```
+
+----
+
+## Build Cache
+
+Verwende Ergebnisse _aller_ vorherigen Builds
+
+![Build Cache](build-cache-build.png)
+<!-- .element class="plain" -->
+
+----
+
+## Inputs → Task → Outputs
+
+- Berechne _cacheKey_ eines Tasks aus dessen Inputs:
+  _cacheKey(javaCompile)_ = _hash(sourceFiles, ...)_
+- Verwende Ergebnisdateien als _cacheEntry_:
+  _cacheEntry(javaCompile)_ = _fileTree(classFiles)_
+
+----
+
+## Remote Build Cache
+
+![Build Cache](build-cache-remote.png)
+<!-- .element class="plain" -->
+
+----
+
+## Lokal und Remote
+
+- CI-Server speichern Task-Ergebnisse im Remote Build Cache
+- Lokale Builds verwenden Ergebnisse aus dem Remote Build Cache
+- Ergebnisse werden für zukünftige Builds im lokalen Build Cache gespeichert
+
+----
+
+## Gradle Enterprise
+
+![Gradle Enterprise](gradle-enterprise.png)
+<!-- .element class="plain" style="width:700px" -->
+
+----
+
+## Neu: Jetzt auch für Apache Maven™️
+
+<video data-autoplay src="maven-with-build-cache.webm"></video>
+
+----
+
+## Gradle Enterprise
+
+![Gradle Enterprise Kunden](gradle-enterprise-customers.png)
+<!-- .element class="plain" -->
 
 ---
 

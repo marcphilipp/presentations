@@ -74,9 +74,9 @@ JUnit Maintainer seit 2012
 
 ## Gradle Inc.
 
-> Build Happiness
-
-* Produkte: *Gradle Build Scans* and *Gradle Enterprise*
+* Vision: *Build Happiness*
+* Mission: *Accelerate Developer Productivity*
+* Produkte: *Build Scans* and *Enterprise Build Cache*
 * [Consulting, Support, Development Services etc.]
 * [Training: online, öffentlich und in-house]
 
@@ -85,10 +85,10 @@ JUnit Maintainer seit 2012
 ## Agenda
 
 * Kurze Einführung in Gradle
-* Inkrementelle Builds
 * Gradle Plugins
+* Inkrementelle Builds
 * Build Scans
-* Build Cache und Gradle Enterprise
+* Build Cache
 
 ---
 <!-- .slide: data-background-color="#01303a" -->
@@ -132,14 +132,6 @@ Ein Gradle-Projekt wird mittels Buildscripts konfiguriert:
 
 - `settings.gradle[.kts]`: Konfiguriert, welche Subprojekte Teile des Builds sind.
 - `build.gradle[.kts]`: Konfiguriert, Plugins und Tasks, die im Build verwendet werden.
-
-----
-
-## Groovy vs. Kotlin DSL
-
-- Buildscript verwenden eine Domain-Specific-Language (DSL).
-- Ursprünglich wurde dazu *Groovy* verwendet.
-- Seit Gradle 5.0 gibt es eine stabile DSL in *Kotlin*.
 
 ----
 
@@ -209,21 +201,12 @@ application { // Extension des 'application'-Plugins
 
 ----
 
-## Verfügbare Tasks?
+## Groovy vs. Kotlin DSL
 
-```plain
-$ ./gradlew tasks
-
-Build tasks
------------
-assemble - Assembles the outputs of this project.
-build - Assembles and tests this project.
-buildDependents - Assembles and tests this project and all projects that depend on it.
-buildNeeded - Assembles and tests this project and all projects it depends on.
-classes - Assembles main classes.
-clean - Deletes the build directory.
-...
-```
+- Buildscript verwenden eine Domain-Specific-Language (DSL).
+- Ursprünglich wurde dazu *Groovy* verwendet.
+- Groovy: Dynamisch typisiert, IDE-Support schwierig
+- Seit Gradle 5.0 gibt es eine stabile DSL in *Kotlin*.
 
 ---
 <!-- .slide: data-background-color="#01303a" -->
@@ -257,8 +240,10 @@ plugins {
 ```
 
 ```java
-public class MyPlugin extends Plugin<Project> {
+public class MyPlugin implements Plugin<Project> {
   @Override public void apply(Project project) {
+    project.getPluginManager().apply(JavaPlugin.class);
+    project.getTasks().register("myTask", task -> ...);
     // ...
   }
 }
@@ -274,15 +259,6 @@ public class MyPlugin extends Plugin<Project> {
 <!-- .element class="plain" -->
 
 ---
-
-<!-- .slide: data-background-color="#01303a" -->
-# Developer Productivity
-
-----
-
-## TODO
-
----
 <!-- .slide: data-background-color="#01303a" -->
 # Inkrementelle Builds
 
@@ -291,7 +267,7 @@ public class MyPlugin extends Plugin<Project> {
 ## Inkrementelle Builds
 
 - Führe nur Tasks aus, die von Änderungen zwischen zwei Builds betroffen sind.
-- Behalte die Ergebnisdateien aller Tasks die up-to-date sind.
+- Behalte die Ergebnisdateien aller Tasks die _up-to-date_ sind.
 
 ----
 
@@ -305,7 +281,6 @@ $ ./gradlew --console=plain build
 > Task :jar
 [...]
 > Task :compileTestJava
-> Task :processTestResources NO-SOURCE
 > Task :testClasses
 > Task :test
 > Task :check
@@ -327,7 +302,6 @@ $ ./gradlew --console=plain build
 > Task :jar UP-TO-DATE
 [...]
 > Task :compileTestJava UP-TO-DATE
-> Task :processTestResources NO-SOURCE
 > Task :testClasses UP-TO-DATE
 > Task :test UP-TO-DATE
 > Task :check UP-TO-DATE
@@ -336,6 +310,17 @@ $ ./gradlew --console=plain build
 BUILD SUCCESSFUL in 0s
 7 actionable tasks: 7 up-to-date
 ```
+
+----
+
+## Wenn wir Zeit hätten...
+
+- Compile avoidance & incremental compiler
+- Gradle Daemon
+- Continuous Builds
+- Composite Builds
+- Tooling API / IDE integration
+- Worker API
 
 ---
 <!-- .slide: data-background-color="#01303a" -->
@@ -355,6 +340,8 @@ Publishing build scan...
 https://gradle.com/s/lu7dxy7quyoju
 ```
 
+› https://gradle.com/s/lu7dxy7quyoju
+
 ----
 
 ## Build Scan: Timeline
@@ -369,19 +356,38 @@ https://gradle.com/s/lu7dxy7quyoju
 
 ----
 
-## Build Scans
+## Build Scans (kostenlos)
 
 - Beschleunigen die Lösung von Build-Problemen
 - Einfach mit Kollegen teilbarer Link
 - Kostenlose Nutzung auf [scans.gradle.com](https://scans.gradle.com/)
-- Gradle Enterprise bietet zusätzliche Features:
-  - Hosting auf eigenem Server
-  - Vergleich zweier Build Scans
-  - Entwicklung von Build-Metriken über die Zeit
+
+----
+
+## Enterprise Build Scans
+
+*Gradle Enterprise* bietet zusätzliche Features:
+
+- Hosting auf eigenem Server
+- Vergleich zweier Build Scans
+- Entwicklung von Build-Metriken über die Zeit
+
+----
+
+## Builds über die Zeit
+
+![Build Scans Timeline](build-scans-timeline.png)
+<!-- .element style="width:80%" -->
+
+----
+
+## Vergleich zweier Builds
+
+![Build Scans Timeline](build-scan-comparison.png)
 
 ---
 <!-- .slide: data-background-color="#01303a" -->
-# Gradle Enterprise
+# Build Cache
 
 ----
 
@@ -392,13 +398,18 @@ $ git pull
 [...]
 185 files changed, 4320 insertions(+), 1755 deletions(-)
 ```
+<!-- .element class="fragment" -->
 
 ```plain
-  $ ./gradlew --build-cache sanityCheck
+$ ./gradlew --build-cache sanityCheck
 
 BUILD SUCCESSFUL in 1m 11s
 1338 actionable tasks: 238 executed, 1100 from cache
 ```
+<!-- .element class="fragment" -->
+
+_Give every developer back one hour a day!_
+<!-- .element class="fragment" -->
 
 ----
 
@@ -444,14 +455,18 @@ Verwende Ergebnisse _aller_ vorherigen Builds
 
 ## Neu: Jetzt auch für Apache Maven™️
 
-<video data-autoplay src="maven-with-build-cache.webm"></video>
+<video class="stretch" controls="controls" src="maven-with-build-cache.webm"></video>
+
+› https://gradle.com/blog/maven/
 
 ----
 
-## Gradle Enterprise
+### Gradle Enterprise Kunden
 
 ![Gradle Enterprise Kunden](gradle-enterprise-customers.png)
-<!-- .element class="plain" -->
+<!-- .element class="plain" style="width:90%" -->
+
+› [gradle.com](https://gradle.com)
 
 ---
 

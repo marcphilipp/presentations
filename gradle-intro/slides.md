@@ -106,7 +106,7 @@ tasks.register("helloWorld") { // in build.gradle
 }
 ```
 
-```plain
+```
 $ gradle helloWorld
 
 > Task :helloWorld
@@ -131,7 +131,7 @@ BUILD SUCCESSFUL in 0s
 Ein Gradle-Projekt wird mittels Buildscripts konfiguriert:
 
 - `settings.gradle[.kts]`: Konfiguriert, welche Subprojekte Teile des Builds sind.
-- `build.gradle[.kts]`: Konfiguriert, Plugins und Tasks, die im Build verwendet werden.
+- `build.gradle[.kts]`: Konfiguriert Plugins und Tasks, die im Build verwendet werden.
 
 ----
 

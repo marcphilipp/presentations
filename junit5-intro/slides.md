@@ -2,7 +2,7 @@
 title: JUnit 5
 theme: white
 highlightTheme: atom-one-light
-css: /assets/wjax-junit5.css
+css: /assets/javaland-junit5.css
 revealOptions:
     transition: zoom
     slideNumber: false
@@ -12,18 +12,20 @@ revealOptions:
         breaks: true
 ---
 
-<!-- .slide: data-background="/assets/wjax-background.png" -->
-# JUnit 5
-<!-- .element style="color:white; margin-top:1em" -->
+<!-- .slide: data-background="/assets/javaland-background.jpg" -->
+# News from JUnit 5
+<!-- .element style="color:#005387; margin-top:-3.2em" -->
 
-#### More than just a <br> Testing Framework for Java
-<!-- .element style="color:white" -->
+<hr style="border-color:#005387; width:25%; background-color:#005387">
+
+### From Revolution to Continuous Evolution
+<!-- .element style="color:#005387" -->
 
 ----
 
 ## ![Marc Philipp](/assets/marc-philipp.jpg) <!-- .element style="width:30%; float:right;" --> Marc Philipp
 
-*Software Engineer at ![Gradle](/assets/gradle.svg) <!-- .element class="plain" style="vertical-align: -35px; height:2em;" -->*
+*Software Engineer at ![Gradle](/assets/gradle.svg) <!-- .element class="plain" style="vertical-align:-16px; height:1.6em; padding-left:5px" -->*
 
 JUnit Maintainer since 2012
 
@@ -39,19 +41,17 @@ JUnit Maintainer since 2012
 
 ----
 
-## 🎉<br>JUnit 5 is here!
+## JUnit 5 releases
 
-**5.0**
-September 10, 2017
+**5.0** -- September 10, 2017
 
-**5.1**
-February 18, 2018
+**5.1** -- February 18, 2018
 
-**5.2**
-April 29, 2018
+**5.2** -- April 29, 2018
 
-**5.3**
-September 11, 2018
+**5.3** -- September 11, 2018
+
+**5.4** -- February 7, 2019
 
 ----
 
@@ -88,7 +88,7 @@ Nope, it's just a new name so we can easily distinguish it from the old JUnit an
 
 ## Basics (Demo)
 
-https://github.com/marcphilipp/junit5-demo/tree/20181107-wjax
+https://github.com/marcphilipp/junit5-demo/tree/20190319-javaland
 
 ----
 
@@ -106,7 +106,7 @@ https://github.com/marcphilipp/junit5-demo/tree/20181107-wjax
 
 ## More ways to test (Demo)
 
-https://github.com/marcphilipp/junit5-demo/tree/20181107-wjax
+https://github.com/marcphilipp/junit5-demo/tree/20190319-javaland
 
 ----
 
@@ -121,7 +121,7 @@ https://github.com/marcphilipp/junit5-demo/tree/20181107-wjax
 
 ## Parallel Execution (Demo)
 
-https://github.com/marcphilipp/junit5-demo/tree/20181107-wjax
+https://github.com/marcphilipp/junit5-demo/tree/20190319-javaland
 
 ----
 
@@ -136,7 +136,7 @@ https://github.com/marcphilipp/junit5-demo/tree/20181107-wjax
 
 ## Extensions (Demo)
 
-https://github.com/marcphilipp/junit5-demo/tree/20181107-wjax
+https://github.com/marcphilipp/junit5-demo/tree/20190319-javaland
 
 ----
 
@@ -169,7 +169,7 @@ public @interface DisabledOnConference {}
 ## Extension Points
 
 - Lifecycle: `BeforeAllCallback`, `BeforeEachCallback`, `BeforeTestExecutionCallback`, `TestExecutionExceptionHandler`, `AfterTestExecutionCallback`, `AfterEachCallback`, `AfterAllCallback`
-- Other: `ExecutionCondition`, `TestInstanceFactory`, `TestInstancePostProcessor`, `ParameterResolver`, `TestTemplateInvocationContextProvider`
+- Other: `ExecutionCondition`, `TestInstanceFactory`, `TestInstancePostProcessor`, `ParameterResolver`, `TestWatcher`, `TestTemplateInvocationContextProvider`
 
 ----
 
@@ -256,7 +256,7 @@ Image: NASA <!-- .element style="font-size: 10px; color:white" -->
 
 ## Third-party Engines
 
-Specsy, Spek, KotlinTest, Cucumber, Drools, jqwik, Brahms, ...
+Specsy, Spek, KotlinTest, Cucumber, Drools, jqwik, Brahms, Mainrunner, ...
 
 <https://github.com/junit-team/junit5/wiki/Third-party-Extensions>
 
@@ -267,7 +267,7 @@ Specsy, Spek, KotlinTest, Cucumber, Drools, jqwik, Brahms, ...
 - Vintage Engine to run JUnit 3/4 tests on the Platform
 - `@Category(UI.class)` maps to `com.acme.UI` tag
 - Limited support for JUnit 4 `Rules` to ease migration
-- Migration support for `@Ignore` (will be in 5.4)
+- Migration support for `@Ignore` (since 5.4)
 - IDEs provide tools to convert test classes to Jupiter API
 - Community-provided migration tool:
   <https://github.com/boyarsky/convert-junit4-to-junit5>
@@ -287,7 +287,7 @@ Specsy, Spek, KotlinTest, Cucumber, Drools, jqwik, Brahms, ...
   - IntelliJ IDEA (≥ 2016.2)
   - Eclipse (≥ 4.7.1a)
   - Visual Studio Code (Java Test Runner ≥ 0.4.0)
-  - Netbeans (will come with 10.0)
+  - Netbeans (≥ 10.0)
 - For other tools, there's `@RunWith(JUnitPlatform)`
 
 ----
@@ -324,7 +324,8 @@ Image: NASA <!-- .element style="font-size: 10px; color:white" -->
 
 ## Important Future Milestones
 
-- Test ordering (e.g. randomization) ✅ will be in 5.4
+- Executing tests in user-defined threads/containers
+- Global Timeouts
 - New reporting format that supports new features
 - Declarative Test Suites
 - Parameterized Test Classes
@@ -357,17 +358,20 @@ Image: NASA <!-- .element style="font-size: 10px; color:white" -->
 
 ----
 
-## Donations
+## Support JUnit
 
-Support the JUnit team with donations via Steady:
-  https://steadyhq.com/en/junit
+Support the JUnit team with donations:
+  https://junit.org/sponsoring
+
+![Sponsors](junit5-sponsors.png)
+<!-- .element class="plain" style="width:35%" -->
 
 ----
 
 ## Example code
 
 * Jupiter:
-  https://github.com/marcphilipp/junit5-demo/tree/20181107-wjax
+  https://github.com/marcphilipp/junit5-demo/tree/20190319-javaland
 * Platform:
   https://github.com/marcphilipp/junit5-platform-demo
 

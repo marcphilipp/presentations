@@ -25,7 +25,7 @@ revealOptions:
 
 ## ![Marc Philipp](/assets/marc-philipp.jpg) <!-- .element style="width:30%; float:right;" --> Marc Philipp
 
-*Software Engineer at ![Gradle](/assets/gradle.svg) <!-- .element class="plain" style="vertical-align: -35px; height:2em;" -->*
+*Software Engineer at ![Gradle](/assets/gradle.svg) <!-- .element class="plain" style="vertical-align:-16px; height:1.6em; padding-left:5px" -->*
 
 JUnit Maintainer since 2012
 

@@ -1,0 +1,14 @@
+@import url("junit5.css");
+
+body:before {
+    content: "";
+    background: url(javaland-logo.png) no-repeat bottom;
+    background-size: 100%;
+    display: inline-block;
+    width: 12%;
+    height: 100%;
+    position: fixed;
+    bottom: 3%;
+    right: 3%;
+    z-index: 1;
+}

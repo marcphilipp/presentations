@@ -1,7 +1,7 @@
 ---
 title: JUnit 5
 theme: white
-highlightTheme: atom-one-light
+highlightTheme: solarized-light
 css: /assets/javaland-junit5.css
 revealOptions:
     transition: zoom
@@ -12,9 +12,9 @@ revealOptions:
         breaks: true
 ---
 
-<!-- .slide: data-background="/assets/javaland-background.jpg" -->
+<!-- .slide: data-background="/assets/javaland-background.svg" -->
 # News from JUnit 5
-<!-- .element style="color:#005387; margin-top:-3.2em" -->
+<!-- .element style="color:#005387; margin-top:-3.5em" -->
 
 <hr style="border-color:#005387; width:25%; background-color:#005387">
 
@@ -104,6 +104,49 @@ https://github.com/marcphilipp/junit5-demo/tree/20190319-javaland
 
 ----
 
+## Kotlin Support <span class="since">5.1</span>
+
+```kotlin
+import org.junit.jupiter.api.*
+
+class KotlinAssertionsDemo {
+    @Test
+    fun `expected exception testing`() {
+        val exception = assertThrows<ArithmeticException> {
+            Calculator().divide(1, 0)
+        }
+        assertEquals("/ by zero", exception.message)
+    }
+    @Test
+    fun `grouped assertions`() {
+        assertAll("Person properties",
+            { assertEquals("Jane", person.firstName) },
+            { assertEquals("Doe", person.lastName) }
+        )
+    }
+}
+```
+
+----
+
+## Display name generators <span class="since">5.4</span>
+
+```java
+@DisplayNameGeneration(ReplaceUnderscores.class)
+class A_year_is_not_supported {
+
+	@Test
+	void if_it_is_zero() {/*...*/}
+
+	@ParameterizedTest
+	@ValueSource(ints = { -1, -4 })
+	void if_it_is_negative(int year) {/*...*/}
+}
+```
+![Gradle](display-name-generators.png) <!-- .element style="border: 0; width:50%" -->
+
+----
+
 ## More ways to test (Demo)
 
 https://github.com/marcphilipp/junit5-demo/tree/20190319-javaland
@@ -113,24 +156,32 @@ https://github.com/marcphilipp/junit5-demo/tree/20190319-javaland
 ## More ways to test (Recap)
 
 - `@ParameterizedTest` with different `@Source` annotations
-  - `@ValueSource`, `@EnumSource`, `@CsvSource`, `@CsvFileSource`, `@MethodSource`, `@ArgumentsSource(MyProvider.class)`, `@YourCustomSource`
+  - `@ValueSource`, `@EnumSource`, `@CsvSource`, `@CsvFileSource`, `@MethodSource`, `@NullSource`&nbsp;<span class="since">5.4</span>, `@EmptySource`&nbsp;<span class="since">5.4</span>, `@ArgumentsSource(MyProvider.class)`, `@YourCustomSource`
 - `@RepeatedTest` for flaky tests
 - `@TestFactory` to produce _dynamic_ tests
 
 ----
 
-## Parallel Execution (Demo)
+## Parallel Execution <span class="since">5.3</span> (Demo)
 
 https://github.com/marcphilipp/junit5-demo/tree/20190319-javaland
 
 ----
 
-## Parallel Execution (Recap)
+## Parallel Execution <span class="since">5.3</span> (Recap)
 
 - Tests are run sequentially by default
 - Opt-in and configure parallel execution via configuration parameters
 - `@Execution(SAME_THREAD` or `CONCURRENT)`
 - Use `@ResourceLock` as declarative synchronization mechanism
+
+----
+
+## Test method ordering <span class="since">5.4</span>
+
+- `@TestMethodOrder(Random.class)` to ensure tests don't rely on any order
+- `@TestMethodOrder(Alphanumeric.class)` and `@TestMethodOrder(OrderAnnotation.class)` for integration tests, changes execution mode to `SAME_THREAD` by default
+- Extensible (implement `MethodOrderer`)
 
 ----
 
@@ -144,17 +195,18 @@ https://github.com/marcphilipp/junit5-demo/tree/20190319-javaland
 
 - Registration (as many as you need):
   - Declarative: `@ExtendWith` on classes or methods
-  - Programmatic: `@RegisterExtension` on fields
+  - Programmatic: `@RegisterExtension` on fields <span class="since">5.1</span>
   - Global: Via `ServiceLoader` (see [User Guide](https://junit.org/junit5/docs/current/user-guide/#extensions-registration-automatic))
 - Implementation:
   - `Extension` marker interface
   - one extension -- _n_ extension points/interfaces
+- Built-in `@TempDir` support <span class="since">5.4</span>
 
 ----
 
 ## Composed Annotations
 
-You can use Jupiter annotations as meta-annotations to create your own annotations.
+Use Jupiter annotations as meta-annotations to create your own annotations.
 
 ```java
 @Retention(RUNTIME)
@@ -166,10 +218,20 @@ public @interface DisabledOnConference {}
 
 ----
 
+## Built-in conditions <span class="since">5.1</span>
+
+- `@EnabledOnOs`/`@DisabledOnOs({LINUX, MAC, …})`
+- `@EnabledOnJre`/`@DisabledOnJre({JAVA_11, …})`
+- `@Enabled`/`DisabledIfSystemProperty(named = "someKey", matches = "someValue")`
+- `@Enabled`/`DisabledIfEnvironmentVariable(named = "SOME_KEY", matches = "SOME_VALUE")`
+- `@EnabledIf`/`@DisabledIf("Math.random() < 0.5")` (experimental)
+
+----
+
 ## Extension Points
 
 - Lifecycle: `BeforeAllCallback`, `BeforeEachCallback`, `BeforeTestExecutionCallback`, `TestExecutionExceptionHandler`, `AfterTestExecutionCallback`, `AfterEachCallback`, `AfterAllCallback`
-- Other: `ExecutionCondition`, `TestInstanceFactory`, `TestInstancePostProcessor`, `ParameterResolver`, `TestWatcher`, `TestTemplateInvocationContextProvider`
+- Other: `ExecutionCondition`, `TestInstanceFactory`&nbsp;<span class="since">5.3</span>, `TestInstancePostProcessor`, `ParameterResolver`, `TestWatcher`&nbsp;<span class="since">5.4</span>, `TestTemplateInvocationContextProvider`
 
 ----
 
@@ -189,12 +251,12 @@ JUnit Pioneer, Spring, Mockito, Testcontainers, Docker, Wiremock, JPA, Selenium/
 
 ---
 
-<!-- .slide: data-background="./space-shuttle-launchpad.jpg" -->
+<!-- .slide: data-background="./mobile-launcher.jpg" -->
 # JUnit Platform
-<!-- .element style="color:white; text-shadow:-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black" -->
+<!-- .element style="color:black; text-shadow:-1px 0 white, 0 1px white, 1px 0 white, 0 -1px white" -->
 
 #### Platform for Testing on the JVM
-<!-- .element style="color:white; text-shadow:-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black" -->
+<!-- .element style="color:black; text-shadow:-1px 0 white, 0 1px white, 1px 0 white, 0 -1px white" -->
 
 Image: NASA <!-- .element style="font-size: 10px; color:white" -->
 
@@ -248,9 +310,7 @@ Image: NASA <!-- .element style="font-size: 10px; color:white" -->
 
 ----
 
-## JUnit 5
-## =
-## Jupiter + Vintage + Platform
+## JUnit 5 <br> = <br> Jupiter + Vintage + Platform
 
 ----
 
@@ -267,7 +327,7 @@ Specsy, Spek, KotlinTest, Cucumber, Drools, jqwik, Brahms, Mainrunner, ...
 - Vintage Engine to run JUnit 3/4 tests on the Platform
 - `@Category(UI.class)` maps to `com.acme.UI` tag
 - Limited support for JUnit 4 `Rules` to ease migration
-- Migration support for `@Ignore` (since 5.4)
+- Migration support for `@Ignore`  <span class="since">5.4</span>
 - IDEs provide tools to convert test classes to Jupiter API
 - Community-provided migration tool:
   <https://github.com/boyarsky/convert-junit4-to-junit5>
@@ -294,7 +354,7 @@ Specsy, Spek, KotlinTest, Cucumber, Drools, jqwik, Brahms, Mainrunner, ...
 
 ## Using multiple Engines (Demo)
 
-<https://github.com/marcphilipp/junit5-platform-demo>
+<https://github.com/junit-team/junit5-samples/tree/master/junit5-multiple-engines>
 
 ----
 
@@ -303,6 +363,36 @@ Specsy, Spek, KotlinTest, Cucumber, Drools, jqwik, Brahms, Mainrunner, ...
 - Multiple test engines can be used in a single test run
 - Distinction between `testImplementation` and `testRuntimeOnly` dependencies
 - Allows to gradually migrate tests from one test engine to another (e.g. from Vintage to Jupiter)
+
+----
+
+## Tag Expressions <span class="since">5.1</span>
+
+Precisely specify which tests to run based on tags:
+
+```kotlin
+test {
+    useJUnitPlatform {
+        includeTags("(smoke & feature-a) | (!smoke & feature-b)")
+    }
+}
+```
+
+----
+
+## Support for Java Modules <span class="since">5.1</span>
+
+Execute all tests in a module:
+```sh
+$ java -jar junit-platform-console-standalone-1.4.0.jar \
+        --select-module com.acme.foo
+```
+
+Scan the module path:
+```sh
+$ java -jar junit-platform-console-standalone-1.4.0.jar \
+        --scan-modules
+```
 
 ----
 
@@ -373,16 +463,17 @@ Support the JUnit team with donations:
 * Jupiter:
   https://github.com/marcphilipp/junit5-demo/tree/20190319-javaland
 * Platform:
-  https://github.com/marcphilipp/junit5-platform-demo
+  https://github.com/junit-team/junit5-samples/tree/master/junit5-multiple-engines
 
 ----
 
 # Questions?
 
-&nbsp;
+*Come talk to Christian Stein ([@sormuras](https://twitter.com/sormuras)) and me at the ![micromata](/assets/micromata.svg) <!-- .element class="plain" style="vertical-align:-22px; height:1.2em; padding:0 10px" --> booth after this talk*
 
-👉 [@marcphilipp](https://twitter.com/marcphilipp) or [@junitteam](https://twitter.com/junitteam) 👈
-on Twitter
+or
+
+ping [@marcphilipp](https://twitter.com/marcphilipp) / [@junitteam](https://twitter.com/junitteam) on Twitter
 
 ----
 

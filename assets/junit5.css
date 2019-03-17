@@ -45,3 +45,13 @@ body:after {
 hr {
     border: 1px solid black;
 }
+
+.reveal span.since {
+    display: inline-block;
+    color: white;
+    background-color: #25a162;
+    font-size: 80%;
+    border-radius: 1em;
+    font-weight: 900;
+    padding: 0 .75ex;
+}

@@ -23,11 +23,12 @@ revealOptions:
 
 ----
 
-## ![Marc Philipp](/assets/marc-philipp.jpg) <!-- .element style="width:30%; float:right;" --> Marc Philipp
+## ![Marc Philipp](/assets/marc-philipp.jpg) <!-- .element style="width:32%; float:right;" --> Marc Philipp
 
 *Software Engineer at ![Gradle](/assets/gradle.svg) <!-- .element class="plain" style="vertical-align:-16px; height:1.6em; padding-left:5px" -->*
 
-JUnit Maintainer since 2012
+JUnit committer since 2012
+team lead since 2016
 
 *Twitter:* [@marcphilipp](https://twitter.com/marcphilipp)
 *Web:* [marcphilipp.de](https://www.marcphilipp.de)
@@ -181,7 +182,7 @@ https://github.com/marcphilipp/junit5-demo/tree/20190319-javaland
 
 - `@TestMethodOrder(Random.class)` to ensure tests don't rely on any order
 - `@TestMethodOrder(Alphanumeric.class)` and `@TestMethodOrder(OrderAnnotation.class)` for integration tests, changes execution mode to `SAME_THREAD` by default
-- Extensible (implement `MethodOrderer`)
+- Extensible: implement `MethodOrderer`
 
 ----
 
@@ -314,14 +315,6 @@ Image: NASA <!-- .element style="font-size: 10px; color:white" -->
 
 ----
 
-## Third-party Engines
-
-Specsy, Spek, KotlinTest, Cucumber, Drools, jqwik, Brahms, Mainrunner, ...
-
-<https://github.com/junit-team/junit5/wiki/Third-party-Extensions>
-
-----
-
 ## Compatibility / Migration
 
 - Vintage Engine to run JUnit 3/4 tests on the Platform
@@ -349,6 +342,14 @@ Specsy, Spek, KotlinTest, Cucumber, Drools, jqwik, Brahms, Mainrunner, ...
   - Visual Studio Code (Java Test Runner ≥ 0.4.0)
   - Netbeans (≥ 10.0)
 - For other tools, there's `@RunWith(JUnitPlatform)`
+
+----
+
+## Third-party Engines
+
+Specsy, Spek, KotlinTest, Cucumber, Drools, jqwik, Brahms, Mainrunner, ...
+
+<https://github.com/junit-team/junit5/wiki/Third-party-Extensions>
 
 ----
 
@@ -441,7 +442,7 @@ Image: NASA <!-- .element style="font-size: 10px; color:white" -->
   http://stackoverflow.com/questions/tagged/junit5
 * Code & Issues:
   https://github.com/junit-team/junit5/
-* Gitter:
+* Chat with the team:
   https://gitter.im/junit-team/junit5
 * Twitter:
   https://twitter.com/junitteam

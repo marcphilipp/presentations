@@ -205,6 +205,13 @@ https://github.com/marcphilipp/junit5-demo/tree/20190319-javaland
 
 ----
 
+## Extension Points
+
+- Lifecycle: `BeforeAllCallback`, `BeforeEachCallback`, `BeforeTestExecutionCallback`, `TestExecutionExceptionHandler`, `AfterTestExecutionCallback`, `AfterEachCallback`, `AfterAllCallback`
+- Other: `ExecutionCondition`, `ParameterResolver`, `TestInstanceFactory`&nbsp;<span class="since">5.3</span>, `TestInstancePostProcessor`, `TestWatcher`&nbsp;<span class="since">5.4</span>, `TestTemplateInvocationContextProvider`
+
+----
+
 ## Composed Annotations
 
 Use Jupiter annotations as meta-annotations to create your own annotations.
@@ -226,13 +233,6 @@ public @interface DisabledOnConference {}
 - `@Enabled`/`DisabledIfSystemProperty(named = "someKey", matches = "someValue")`
 - `@Enabled`/`DisabledIfEnvironmentVariable(named = "SOME_KEY", matches = "SOME_VALUE")`
 - `@EnabledIf`/`@DisabledIf("Math.random() < 0.5")` (experimental)
-
-----
-
-## Extension Points
-
-- Lifecycle: `BeforeAllCallback`, `BeforeEachCallback`, `BeforeTestExecutionCallback`, `TestExecutionExceptionHandler`, `AfterTestExecutionCallback`, `AfterEachCallback`, `AfterAllCallback`
-- Other: `ExecutionCondition`, `TestInstanceFactory`&nbsp;<span class="since">5.3</span>, `TestInstancePostProcessor`, `ParameterResolver`, `TestWatcher`&nbsp;<span class="since">5.4</span>, `TestTemplateInvocationContextProvider`
 
 ----
 

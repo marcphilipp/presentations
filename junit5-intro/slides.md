@@ -2,7 +2,7 @@
 title: JUnit 5
 theme: white
 highlightTheme: solarized-light
-css: /assets/javaland-junit5.css
+css: /assets/jeeconf-junit5.css
 revealOptions:
     transition: zoom
     slideNumber: false
@@ -12,14 +12,14 @@ revealOptions:
         breaks: true
 ---
 
-<!-- .slide: data-background="/assets/javaland-background.svg" -->
+<!-- .slide: data-background="/assets/jeeconf-background.jpg" -->
 # News from JUnit 5
-<!-- .element style="color:#005387; margin-top:-3.5em" -->
+<!-- .element style="color:#fff;" -->
 
-<hr style="border-color:#005387; width:25%; background-color:#005387">
+<hr style="border-color:#fff; width:25%; background-color:#fff">
 
 ### From Revolution to Continuous Evolution
-<!-- .element style="color:#005387" -->
+<!-- .element style="color:#fff" -->
 
 ----
 
@@ -89,7 +89,7 @@ Nope, it's just a new name so we can easily distinguish it from the old JUnit an
 
 ## Basics (Demo)
 
-https://github.com/marcphilipp/junit5-demo/tree/20190319-javaland
+https://github.com/marcphilipp/junit5-demo/tree/20190427-jeeconf
 
 ----
 
@@ -150,7 +150,7 @@ class A_year_is_not_supported {
 
 ## More ways to test (Demo)
 
-https://github.com/marcphilipp/junit5-demo/tree/20190319-javaland
+https://github.com/marcphilipp/junit5-demo/tree/20190427-jeeconf
 
 ----
 
@@ -165,7 +165,7 @@ https://github.com/marcphilipp/junit5-demo/tree/20190319-javaland
 
 ## Parallel Execution <span class="since">5.3</span> (Demo)
 
-https://github.com/marcphilipp/junit5-demo/tree/20190319-javaland
+https://github.com/marcphilipp/junit5-demo/tree/20190427-jeeconf
 
 ----
 
@@ -188,7 +188,7 @@ https://github.com/marcphilipp/junit5-demo/tree/20190319-javaland
 
 ## Extensions (Demo)
 
-https://github.com/marcphilipp/junit5-demo/tree/20190319-javaland
+https://github.com/marcphilipp/junit5-demo/tree/20190427-jeeconf
 
 ----
 
@@ -462,7 +462,7 @@ Support the JUnit team with donations:
 ## Example code
 
 * Jupiter:
-  https://github.com/marcphilipp/junit5-demo/tree/20190319-javaland
+  https://github.com/marcphilipp/junit5-demo/tree/20190427-jeeconf
 * Platform:
   https://github.com/junit-team/junit5-samples/tree/master/junit5-multiple-engines
 
@@ -470,11 +470,7 @@ Support the JUnit team with donations:
 
 # Questions?
 
-*Come talk to Christian Stein ([@sormuras](https://twitter.com/sormuras)) and me at the ![micromata](/assets/micromata.svg) <!-- .element class="plain" style="vertical-align:-22px; height:1.2em; padding:0 10px" --> booth after this talk*
-
-or
-
-ping [@marcphilipp](https://twitter.com/marcphilipp) / [@junitteam](https://twitter.com/junitteam) on Twitter
+[@marcphilipp](https://twitter.com/marcphilipp) / [@junitteam](https://twitter.com/junitteam) on Twitter
 
 ----
 

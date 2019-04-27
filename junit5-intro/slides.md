@@ -105,6 +105,32 @@ https://github.com/marcphilipp/junit5-demo/tree/20190427-jeeconf
 
 ----
 
+## Display name generators <span class="since">5.4</span>
+
+```java
+@DisplayNameGeneration(ReplaceUnderscores.class)
+class A_year_is_not_supported {
+
+	@Test
+	void if_it_is_zero() {/*...*/}
+
+	@ParameterizedTest
+	@ValueSource(ints = { -1, -4 })
+	void if_it_is_negative(int year) {/*...*/}
+}
+```
+![Gradle](display-name-generators.png) <!-- .element style="border: 0; width:50%" -->
+
+----
+
+## Test method ordering <span class="since">5.4</span>
+
+- `@TestMethodOrder(Random.class)` to ensure tests don't rely on any order
+- `@TestMethodOrder(Alphanumeric.class)` and `@TestMethodOrder(OrderAnnotation.class)` for integration tests
+- Extensible: implement `MethodOrderer`
+
+----
+
 ## Kotlin Support <span class="since">5.1</span>
 
 ```kotlin
@@ -127,24 +153,6 @@ class KotlinAssertionsDemo {
     }
 }
 ```
-
-----
-
-## Display name generators <span class="since">5.4</span>
-
-```java
-@DisplayNameGeneration(ReplaceUnderscores.class)
-class A_year_is_not_supported {
-
-	@Test
-	void if_it_is_zero() {/*...*/}
-
-	@ParameterizedTest
-	@ValueSource(ints = { -1, -4 })
-	void if_it_is_negative(int year) {/*...*/}
-}
-```
-![Gradle](display-name-generators.png) <!-- .element style="border: 0; width:50%" -->
 
 ----
 
@@ -178,14 +186,6 @@ https://github.com/marcphilipp/junit5-demo/tree/20190427-jeeconf
 
 ----
 
-## Test method ordering <span class="since">5.4</span>
-
-- `@TestMethodOrder(Random.class)` to ensure tests don't rely on any order
-- `@TestMethodOrder(Alphanumeric.class)` and `@TestMethodOrder(OrderAnnotation.class)` for integration tests, changes execution mode to `SAME_THREAD` by default
-- Extensible: implement `MethodOrderer`
-
-----
-
 ## Extensions (Demo)
 
 https://github.com/marcphilipp/junit5-demo/tree/20190427-jeeconf
@@ -201,14 +201,6 @@ https://github.com/marcphilipp/junit5-demo/tree/20190427-jeeconf
 - Implementation:
   - `Extension` marker interface
   - one extension -- _n_ extension points/interfaces
-- Built-in `@TempDir` support <span class="since">5.4</span>
-
-----
-
-## Extension Points
-
-- Lifecycle: `BeforeAllCallback`, `BeforeEachCallback`, `BeforeTestExecutionCallback`, `TestExecutionExceptionHandler`, `AfterTestExecutionCallback`, `AfterEachCallback`, `AfterAllCallback`
-- Other: `ExecutionCondition`, `ParameterResolver`, `TestInstanceFactory`&nbsp;<span class="since">5.3</span>, `TestInstancePostProcessor`, `TestWatcher`&nbsp;<span class="since">5.4</span>, `TestTemplateInvocationContextProvider`
 
 ----
 
@@ -226,13 +218,37 @@ public @interface DisabledOnConference {}
 
 ----
 
+## Extension Points
+
+- Lifecycle: `BeforeAllCallback`, `BeforeEachCallback`, `BeforeTestExecutionCallback`, `TestExecutionExceptionHandler`, `AfterTestExecutionCallback`, `AfterEachCallback`, `AfterAllCallback`
+- Other: `ExecutionCondition`, `ParameterResolver`, `TestInstanceFactory`&nbsp;<span class="since">5.3</span>, `TestInstancePostProcessor`, `TestWatcher`&nbsp;<span class="since">5.4</span>, `TestTemplateInvocationContextProvider`
+
+----
+
+## Built-in temp dir support <span class="since">5.4</span>
+
+```java
+import org.junit.jupiter.api.io.TempDir;
+
+@Test
+void writeAndReadFile(@TempDir Path tempDir) throws Exception {
+    Path testFile = tempDir.resolve("test.txt");
+
+    Files.write(testFile, asList("foo", "bar"));
+
+    List<String> actualLines = Files.readAllLines(testFile);
+    assertIterableEquals(asList("foo", "bar"), actualLines);
+}
+```
+
+----
+
 ## Built-in conditions <span class="since">5.1</span>
 
 - `@EnabledOnOs`/`@DisabledOnOs({LINUX, MAC, …})`
 - `@EnabledOnJre`/`@DisabledOnJre({JAVA_11, …})`
 - `@Enabled`/`DisabledIfSystemProperty(named = "someKey", matches = "someValue")`
 - `@Enabled`/`DisabledIfEnvironmentVariable(named = "SOME_KEY", matches = "SOME_VALUE")`
-- `@EnabledIf`/`@DisabledIf("Math.random() < 0.5")` (experimental)
 
 ----
 
@@ -355,7 +371,7 @@ Specsy, Spek, KotlinTest, Cucumber, Drools, jqwik, Brahms, Mainrunner, ...
 
 ## Using multiple Engines (Demo)
 
-<https://github.com/junit-team/junit5-samples/tree/master/junit5-multiple-engines>
+<https://github.com/marcphilipp/junit5-platform-demo>
 
 ----
 
@@ -386,13 +402,13 @@ test {
 Execute all tests in a module:
 ```sh
 $ java -jar junit-platform-console-standalone-1.4.0.jar \
-        --select-module com.acme.foo
+       --select-module com.acme.foo
 ```
 
 Scan the module path:
 ```sh
 $ java -jar junit-platform-console-standalone-1.4.0.jar \
-        --scan-modules
+       --scan-modules
 ```
 
 ----
@@ -415,12 +431,12 @@ Image: NASA <!-- .element style="font-size: 10px; color:white" -->
 
 ## Important Future Milestones
 
-- Executing tests in user-defined threads/containers
-- Global Timeouts
-- New reporting format that supports new features
+- Reusable test discovery for test engines <span class="since">5.5 M1</span>
+- Executing tests in user-defined threads <span class="since">5.5 M2</span>
+- Declarative/global timeouts <span class="since">5.5 M2</span>
+- New reporting format that supports new features (e.g. tags, display names, report entries)
 - Declarative Test Suites
 - Parameterized Test Classes
-- Scenario Tests
 - _Your ideas?_
 
 ----
@@ -464,7 +480,7 @@ Support the JUnit team with donations:
 * Jupiter:
   https://github.com/marcphilipp/junit5-demo/tree/20190427-jeeconf
 * Platform:
-  https://github.com/junit-team/junit5-samples/tree/master/junit5-multiple-engines
+  https://github.com/marcphilipp/junit5-platform-demo
 
 ----
 
@@ -474,4 +490,4 @@ Support the JUnit team with donations:
 
 ----
 
-# Thanks!
+# Дякую!

@@ -211,9 +211,11 @@ Use Jupiter annotations as meta-annotations to create your own annotations.
 ```java
 @Retention(RUNTIME)
 @Target(METHOD)
-@ExtendWith(ConferenceExecutionCondition.class)
+@ExtendWith(DisabledOnWeekdaysExtension.class)
 @Tag("example")
-public @interface DisabledOnConference {}
+public @interface DisabledOnWeekdays {
+    DayOfWeek[] value();
+}
 ```
 
 ----

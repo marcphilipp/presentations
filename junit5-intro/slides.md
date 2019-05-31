@@ -319,7 +319,7 @@ Image: NASA <!-- .element style="font-size: 10px; color:white" -->
 ## Design Goals
 
 - *Flexibility:* Adding new features should be easy. It should be clear whether a change might potentially break a client.
-- *Backward Compatibility:* Test written with JUnit 3 and 4 should still run
+- *Backward Compatibility:* Tests written with JUnit 3 and 4 should still run
 - *Forward Compatibility:* Old IDEs and build tools should be able to execute new tests
 
 ----

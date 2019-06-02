@@ -54,7 +54,7 @@ Team Lead seit 2016
 
 **5.4** -- 7. Februar 2019
 
-**5.5** -- Donnerstag?
+**5.5** -- Juni 2019
 
 ----
 
@@ -309,36 +309,11 @@ Image: NASA <!-- .element style="font-size: 10px; color:white" -->
 ![JUnit 4 Usage](junit4-usage.svg)
 <!-- .element class="plain" style="height:7em" -->
 
-
-----
-
-## Coupling
-
-![Serialization Bug](serialization-bug.png)
-<!-- .element class="plain" style="width:100%" -->
-
 ----
 
 # 💡
 
 > Wenn JUnit eine Plattform ist, dann sollten wir die Architektur darauf auslegen!
-
-----
-
-## Trennung von Verantwortlichkeiten
-
-1. API zum Schreiben von Tests und Extensions (Jupiter API)
-1. Erweiterbarer Mechanismus zum Auffinden und Ausführen von Tests (Test Engine SPI)
-1. API zur Testausführung durch IDEs und Build Tools (Launcher API)
-
-
-----
-
-## Design-Ziele
-
-- *Flexibilität:* Neue Features hinzuzufügen ist einfach. Es ist klar, ob eine Änderung problematisch ist oder nicht.
-- *Rückwärtskompatibilität:* JUnit 3/4 Tests laufen immer noch
-- *Vorwärtskompatibilität:* Alte IDEs und Build Tools können neue Tests ausführen
 
 ----
 
@@ -348,36 +323,6 @@ Image: NASA <!-- .element style="font-size: 10px; color:white" -->
 ----
 
 ## JUnit 5 <br> = <br> Jupiter + Vintage + Platform
-
-----
-
-## Kompatibilität / Migration
-
-- Vintage Engine führt JUnit 3/4 Tests auf der Plattform aus
-- `@Category(UI.class)` entspricht `com.acme.UI`-Tag
-- Teilweise Unterstützung von JUnit 4 `Rules`
-- Unterstützung von `@Ignore` <span class="since">5.4</span>
-- IDEs können Testklassen in die Jupiter API konvertieren
-- Migrationswerkzeug aus der Community:
-  <https://github.com/junit-pioneer/convert-junit4-to-junit5>
-
-----
-
-## Build Tools
-
-- Gradle (≥ 4.6), Ant (≥ 1.10.3) und Maven Surefire (≥ 2.22.0) unterstützen die JUnit Platform
-- Mit dem `ConsoleLauncher` kann man Tests über die Kommandozeile ausführen und andere Build Tools (z.B. Bazel) erweitern
-
-----
-
-## IDEs
-
-- Sehr gute Unterstützung
-  - IntelliJ IDEA (≥ 2016.2)
-  - Eclipse (≥ 4.7.1a)
-  - Visual Studio Code (Java Test Runner ≥ 0.4.0)
-  - Netbeans (≥ 10.0)
-- Für andere IDEs gibt es `@RunWith(JUnitPlatform)`
 
 ----
 
@@ -400,6 +345,36 @@ Specsy, Spek, KotlinTest, Cucumber, Drools, jqwik, Brahms, Mainrunner, ...
 - Mehrere Test Engines können in einem Testlauf verwendet werden
 - Unterscheidung zwischen Abhängigkeiten in `testImplementation` und `testRuntimeOnly`
 - Erlaubt eine schrittweise Migration von einer Test Engine zur anderen (z.B. von Vintage nach Jupiter)
+
+----
+
+## Kompatibilität / Migration
+
+- Vintage Engine führt JUnit 3/4 Tests auf der Plattform aus
+- `@Category(UI.class)` entspricht `com.acme.UI`-Tag
+- Teilweise Unterstützung von JUnit 4 `Rules`
+- Unterstützung von `@Ignore` <span class="since">5.4</span>
+- IDEs können Testklassen in die Jupiter API konvertieren
+- Migrationswerkzeug aus der Community:
+  <https://github.com/junit-pioneer/convert-junit4-to-junit5>
+
+----
+
+## Build Tools
+
+- Gradle (≥ 4.6), Ant (≥ 1.10.3) und Maven Surefire (≥ 2.22.0) unterstützen die JUnit Platform
+- Mit dem `ConsoleLauncher` kann man Tests über die Kommandozeile ausführen und in andere Build Tools (z.B. Bazel) integrieren
+
+----
+
+## IDEs
+
+- Sehr gute Unterstützung
+  - IntelliJ IDEA (≥ 2016.2)
+  - Eclipse (≥ 4.7.1a)
+  - Visual Studio Code (Java Test Runner ≥ 0.4.0)
+  - Netbeans (≥ 10.0)
+- Für andere IDEs gibt es `@RunWith(JUnitPlatform)`
 
 ----
 

@@ -55,3 +55,16 @@ hr {
     font-weight: 900;
     padding: 0 .75ex;
 }
+
+.reveal .progress {
+    color: #26a162;
+}
+
+.reveal a {
+    color: #dc524a;
+}
+
+.reveal a:hover {
+    color: #b62b23;
+    text-decoration: underline;
+}

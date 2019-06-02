@@ -513,4 +513,4 @@ https://junit.org/sponsoring
 
 ----
 
-<!-- .slide: data-background="./etka-feedback.jpg" -->
+<!-- .slide: data-background="./etka-feedback.svg" -->

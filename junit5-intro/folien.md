@@ -311,9 +311,32 @@ Image: NASA <!-- .element style="font-size: 10px; color:white" -->
 
 ----
 
+## Coupling
+
+![Serialization Bug](serialization-bug.png)
+<!-- .element class="plain" style="width:100%" -->
+
+----
+
 # 💡
 
 > Wenn JUnit eine Plattform ist, dann sollten wir die Architektur darauf auslegen!
+
+----
+
+## Trennung von Verantwortlichkeiten
+
+1. API zum Schreiben von Tests und Extensions (Jupiter API)
+1. Erweiterbarer Mechanismus zum Auffinden und Ausführen von Tests (Test Engine SPI)
+1. API zur Testausführung durch IDEs und Build Tools (Launcher API)
+
+----
+
+## Design-Ziele
+
+- *Flexibilität:* Neue Features hinzuzufügen ist einfach. Es ist klar, ob eine Änderung problematisch ist oder nicht.
+- *Rückwärtskompatibilität:* JUnit 3/4 Tests laufen immer noch
+- *Vorwärtskompatibilität:* Alte IDEs und Build Tools können neue Tests ausführen
 
 ----
 

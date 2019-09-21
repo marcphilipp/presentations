@@ -12,11 +12,13 @@ revealOptions:
         breaks: true
 ---
 
-<!-- .slide: data-background="/assets/gradle-title.jpg" data-transition="fade" -->
+<!-- .slide: data-background="#01313a" data-background-image="/assets/gradle-title.png" data-background-size="cover" data-transition="fade" -->
+
 # Gradle -- Build Happiness
-<!-- .element style="font-size:160%; margin-top:450px" -->
+<!-- .element style="font-size:160%; text-align:right; margin-top:-300px" -->
 
 ### Marc Philipp, Gradle Inc.
+<!-- .element style="text-align:right" -->
 
 ----
 
@@ -36,7 +38,7 @@ JUnit Maintainer seit 2012
 ## Show of Hands
 
 ----
-<!-- .slide: data-background-color="#01303a" -->
+<!-- .slide: data-background="#01313a" data-background-image="/assets/gradle-subsection.png" data-background-size="cover"-->
 # Was ist Gradle?
 
 ----
@@ -91,7 +93,7 @@ JUnit Maintainer seit 2012
 * Build Cache
 
 ---
-<!-- .slide: data-background-color="#01303a" -->
+<!-- .slide: data-background="#01313a" data-background-image="/assets/gradle-subsection.png" data-background-size="cover"-->
 # Kurze Einführung in Gradle
 
 ----
@@ -209,7 +211,7 @@ application { // Extension des 'application'-Plugins
 - Seit Gradle 5.0 gibt es eine stabile DSL in *Kotlin*.
 
 ---
-<!-- .slide: data-background-color="#01303a" -->
+<!-- .slide: data-background="#01313a" data-background-image="/assets/gradle-subsection.png" data-background-size="cover"-->
 # Gradle Plugins
 
 ----
@@ -259,7 +261,7 @@ public class MyPlugin implements Plugin<Project> {
 <!-- .element class="plain" -->
 
 ---
-<!-- .slide: data-background-color="#01303a" -->
+<!-- .slide: data-background="#01313a" data-background-image="/assets/gradle-subsection.png" data-background-size="cover"-->
 # Inkrementelle Builds
 
 ----
@@ -323,7 +325,7 @@ BUILD SUCCESSFUL in 0s
 - Worker API
 
 ---
-<!-- .slide: data-background-color="#01303a" -->
+<!-- .slide: data-background="#01313a" data-background-image="/assets/gradle-subsection.png" data-background-size="cover"-->
 # Build Scans
 
 ----
@@ -386,7 +388,7 @@ https://gradle.com/s/lu7dxy7quyoju
 ![Build Scans Timeline](build-scan-comparison.png)
 
 ---
-<!-- .slide: data-background-color="#01303a" -->
+<!-- .slide: data-background="#01313a" data-background-image="/assets/gradle-subsection.png" data-background-size="cover"-->
 # Build Cache
 
 ----
@@ -469,7 +471,9 @@ Verwende Ergebnisse _aller_ vorherigen Builds
 › [gradle.com](https://gradle.com)
 
 ---
+<!-- .slide: data-background="#01313a" data-background-image="/assets/gradle-subsection.png" data-background-size="cover"-->
 
-<!-- .slide: data-background="/assets/gradle-outro.jpg" -->
+![](/assets/gradle-thank-you.png)
+<!-- .element class="plain" style="width:40%" -->
+
 # Q & A
-<!-- .element style="margin-top:4.8em" -->

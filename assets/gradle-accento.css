@@ -5,9 +5,9 @@ body:before {
     background: url(accento.png) no-repeat bottom;
     background-size: 100%;
     display: inline-block;
-    width: 12%;
+    width: 11%;
     height: 100%;
     position: fixed;
     bottom: 3%;
-    left: 3%;
+    left: 9%;
 }

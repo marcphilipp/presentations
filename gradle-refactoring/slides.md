@@ -137,9 +137,10 @@ A Gradle project is configured in build scripts:
 
 `./gradlew <tasks>` instead of `gradle <tasks>`
 
-- allows executing builds with prior installation of Gradle
-- downloads required version unless already cached locally
-- developers and CI server always use the same version
+- execute builds with prior installation of Gradle
+- downloads required version
+- caches already downloaded versions locally
+- everyone uses the same version
 
 ----
 
@@ -159,7 +160,7 @@ BUILD SUCCESSFUL in 0s
 ├── gradle/wrapper      // wrapper jar and configuration
 ├── gradlew             // wrapper script for Linux/macOS
 ├── gradlew.bat         // wrapper script for Windows
-├── settings.gradle.kts // settings
+├── settings.gradle.kts // settings script
 └── src                 // Java source tree
     ├── main
     │   ├── java
@@ -321,8 +322,9 @@ BUILD SUCCESSFUL in 1m 11s
 
 - Don't duplicate dependency version
 - Don't "inherit" dependencies from parent project
+- Prefer `api` or `implementation` over `compile`
 - Use `buildSrc` to collect dependency versions
-- Use a `java-platform` to streamline dependency management
+- Use a `java-platform` plugin to streamline dependency management
 
 ----
 
@@ -361,11 +363,9 @@ Free webinars:
 
 ## Recap
 
-- Don't duplicate configuration logic in build scripts
-- Think about what a proper DSL should look like
-- Extract your custom logic into a script plugin
-- Better: Extract your custom logic into a pre-compiled script plugin in `buildSrc`
-- Next step: Extract it into a separate plugin to use it in independent projects
+- Extract custom logic into separate build scripts
+- Even better: Extract your custom logic into a pre-compiled script plugin in `buildSrc`
+- Next step: Move it to a separate plugin to use it in independent projects
 
 ---
 <!-- .slide: data-background="#01313a" data-background-image="/assets/gradle-subsection.png" data-background-size="cover"-->

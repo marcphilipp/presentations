@@ -1,0 +1,13 @@
+@import url("gradle.css");
+
+body:before {
+    content: "";
+    background: url(accento.png) no-repeat bottom;
+    background-size: 100%;
+    display: inline-block;
+    width: 12%;
+    height: 100%;
+    position: fixed;
+    bottom: 3%;
+    left: 3%;
+}

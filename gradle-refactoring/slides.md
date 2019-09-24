@@ -1,7 +1,7 @@
 ---
 title: Gradle
 theme: white
-highlightTheme: atom-one-light
+highlightTheme: solarized-dark
 css: /assets/gradle-accento.css
 revealOptions:
     transition: zoom
@@ -24,7 +24,7 @@ revealOptions:
 
 ## ![Marc Philipp](/assets/marc-philipp.jpg) <!-- .element style="width:25%; float:right;" --> Marc Philipp
 
-*Software Engineer bei Gradle, Inc.*
+*Software Engineer at Gradle, Inc.*
 
 JUnit ![5](/assets/junit5-logo.svg)<!-- .element class="plain" style="height:1em; margin:0; vertical-align:-.3ex" --> team lead
 
@@ -74,10 +74,8 @@ JUnit ![5](/assets/junit5-logo.svg)<!-- .element class="plain" style="height:1em
 
 ## Agenda
 
-> Quick & Dirty
-
 * Basic concepts
-* How to make a mess with ...
+* From Quick & Dirty to Safe & Sound
   * dependency management
   * custom tasks
   * custom configuration
@@ -133,6 +131,50 @@ A Gradle project is configured in build scripts:
 
 ----
 
+## settings.gradle[.kts]
+
+```kotlin
+rootProject.name = "new-project"
+
+include("subproject-a")
+include("subproject-b")
+```
+
+----
+
+## build.gradle[.kts]
+
+```kotlin
+plugins {
+    java // to compile Java sources
+    application // to generate startup scripts
+}
+repositories {
+    jcenter() // to resolve dependencies
+}
+dependencies {
+    implementation("com.google.guava:guava:28.0-jre")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.5.2")
+}
+application { // extension of the 'application' plugin
+    mainClassName = "com.example.App"
+}
+```
+
+----
+
+## Groovy vs. Kotlin DSL
+
+- build scripts use a Domain Specific Language (DSL)
+- initially Gradle only supported *Groovy*
+  - dynamically typed
+  - limited IDE support
+- *Kotlin DSL* is stable since Gradle 5.0
+
+> Build scripts should be declarative -- complex logic does not belong here.
+
+----
+
 ## Gradle Wrapper
 
 `./gradlew <tasks>` instead of `gradle <tasks>`
@@ -169,50 +211,6 @@ BUILD SUCCESSFUL in 0s
         ├── java
         └── resources
 ```
-
-----
-
-## settings.gradle.kts
-
-```kotlin
-rootProject.name = "new-project"
-
-include("subproject-a")
-include("subproject-b")
-```
-
-----
-
-## build.gradle.kts
-
-```kotlin
-plugins {
-    java // to compile Java sources
-    application // to generate startup scripts
-}
-repositories {
-    jcenter() // to resolve dependencies
-}
-dependencies {
-    implementation("com.google.guava:guava:26.0-jre")
-    testImplementation("junit:junit:4.12")
-}
-application { // extension of the 'application' plugin
-    mainClassName = "com.example.App"
-}
-```
-
-----
-
-## Groovy vs. Kotlin DSL
-
-- build scripts use a Domain Specific Language (DSL)
-- initially Gradle only supported *Groovy*
-  - dynamically typed
-  - limited IDE support
-- *Kotlin DSL* is stable since Gradle 5.0
-
-> Build scripts should be declarative -- complex logic does not belong here.
 
 ----
 
@@ -321,7 +319,6 @@ BUILD SUCCESSFUL in 1m 11s
 ## Recap
 
 - Don't duplicate dependency version
-- Don't "inherit" dependencies from parent project
 - Prefer `api` or `implementation` over `compile`
 - Use `buildSrc` to collect dependency versions
 - Use a `java-platform` plugin to streamline dependency management
@@ -366,6 +363,27 @@ Free webinars:
 - Extract custom logic into separate build scripts
 - Even better: Extract your custom logic into a pre-compiled script plugin in `buildSrc`
 - Next step: Move it to a separate plugin to use it in independent projects
+
+---
+
+<!-- .slide: data-background="#01313a" data-background-image="/assets/gradle-subsection.png" data-background-size="cover"-->
+# Summary
+
+----
+
+## Summary
+
+- Keep your build scripts declarative
+- Use `buildSrc` to share logic
+
+---
+
+## Links
+
+- Demo code:
+  https://github.com/marcphilipp/gradle-refactorings
+- My talks on Gradle and JUnit:
+  https://www.marcphilipp.de/en/talks/
 
 ---
 <!-- .slide: data-background="#01313a" data-background-image="/assets/gradle-subsection.png" data-background-size="cover"-->

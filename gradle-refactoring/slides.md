@@ -68,7 +68,6 @@ JUnit ![5](/assets/junit5-logo.svg)<!-- .element class="plain" style="height:1em
 * Products:
   - *Gradle Build Tool*
   - *Gradle Enterprise*
-* more than 60 employees including over 40 engineers
 
 ----
 
@@ -318,8 +317,8 @@ BUILD SUCCESSFUL in 1m 11s
 
 ## Recap
 
-- Don't duplicate dependency version
 - Prefer `api` or `implementation` over `compile`
+- Don't duplicate dependency version
 - Use `buildSrc` to collect dependency versions
 - Use a `java-platform` plugin to streamline dependency management
 

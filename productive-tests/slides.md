@@ -20,9 +20,7 @@ revealOptions:
 
 ## About me
 
-----
-
-## About you
+![JUnit 5](/assets/junit5-logo.svg)<!-- .element class="plain" style="height:6em; margin-right:3em" -->![Gradle](/assets/gradle-elephant-icon-gradient-primary.svg)<!-- .element class="plain" style="height:6em" -->
 
 ---
 
@@ -204,12 +202,16 @@ https://labs.spotify.com/2018/01/11/testing-of-microservices/ <!-- .element styl
 
 ## Test Desiderata
 
-- Recent blog post by Kent Beck
-- Describes 12 desirable properties of tests
+> 12 desirable properties of tests
+
+- Recent blog post by Kent Beck, https://medium.com/@kentbeck_7670/test-desiderata-94150638a4b3
+- Video series (with Kent Beck and Kelly Sutton), https://www.youtube.com/playlist?list=PLlmVY7qtgT_lkbrk9iZNizp978mVzpBKl
+
+----
+
+## 12(!) properties?
 
 > Not all tests need to exhibit all properties. However, no property should be given up without receiving a property of greater value in return.
-
-https://medium.com/@kentbeck_7670/test-desiderata-94150638a4b3
 
 ----
 
@@ -428,3 +430,159 @@ Structure-insensitive ↑, Predictive ↑, Writable ↓, Fast&nbsp;↓ ...
 # Case Study: Gradle<!-- .element style="color:white; text-shadow: 1px 1px 5px black;" -->
 
 <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:10px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@fraumuksch?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Jennifer Latuperisa-Andresen"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:10px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Jennifer Latuperisa-Andresen</span></a>
+
+----
+
+## Test mix in Gradle
+
+- Mostly integration/integrated tests (~50%)
+- Some unit tests (~35%)
+- Cross-version tests
+- Performance tests
+
+----
+
+## A **bad** unit test 😳
+
+```groovy
+def "init task creates project with all defaults"() {
+    given:
+    def projectLayoutRegistry = Mock(ProjectLayoutSetupRegistry.class)
+    def buildConverter = Mock(BuildConverter.class)
+    projectLayoutRegistry.buildConverter >> buildConverter
+    buildConverter.canApplyToCurrentDirectory() >> false
+    projectLayoutRegistry.default >> projectSetupDescriptor
+    projectLayoutRegistry.getLanguagesFor(ComponentType.BASIC) >> [Language.NONE]
+    projectLayoutRegistry.get(ComponentType.BASIC, Language.NONE) >> projectSetupDescriptor
+    def projectSetupDescriptor = Mock(BuildInitializer.class)
+    projectSetupDescriptor.componentType >> ComponentType.BASIC
+    projectSetupDescriptor.dsls >> [GROOVY]
+    projectSetupDescriptor.defaultDsl >> GROOVY
+    projectSetupDescriptor.testFrameworks >> [NONE]
+    projectSetupDescriptor.defaultTestFramework >> NONE
+    projectSetupDescriptor.furtherReading >> Optional.empty()
+
+    when:
+    def init = TestUtil.create(testDir).task(InitBuild)
+    init.setupProjectLayout()
+
+    then:
+    1 * projectSetupDescriptor.generate(
+		{it.dsl == GROOVY && it.testFramework == NONE})
+}
+```
+<!-- .element class="plain" style="font-size:45%" -->
+
+Readable&nbsp;↓, Structure-insensitive&nbsp;↓, Inspiring&nbsp;↓, Fast&nbsp;↑
+
+----
+
+## A **good** integration test 😌
+
+```groovy
+def targetDir = testDirectory.createDir("some-thing")
+def "creates valid sample sources if no sources are present"() {
+    when:
+	executer.inDirectory(targetDir)
+		.succeeds('init', '--type', 'groovy-library')
+    then:
+    targetDir.file("src/main/groovy")
+		.assertHasDescendants("some/thing/Library.groovy")
+    targetDir.file("src/test/groovy")
+		.assertHasDescendants("some/thing/LibraryTest.groovy")
+    when:
+    run("build")
+    then:
+    assertTestPassed("some.thing.LibraryTest", "someLibraryMethod returns true")
+}
+```
+<!-- .element class="plain" style="font-size:45%" -->
+
+Readable&nbsp;↑, Structure-insensitive&nbsp;↑, Inspiring&nbsp;↑, Fast&nbsp;→
+
+----
+
+## Test fixtures
+
+In order to write such readable integration tests, a lot of supporting code has to be in place.
+
+----
+
+## Challenges
+
+- _Speed:_ critically important for feedback loop and CI build times
+- _Flakiness:_ the more parts involved, the higher the chance of "random" failures
+
+----
+
+## Speed
+
+- Two modes:
+  - _embedded_ -- runs Gradle in-process for fast local development
+  - _forking_ -- calls Gradle like it would be called by users
+- CI only runs tests for projects affected by changes, other results are loaded from [build cache](https://docs.gradle.org/current/userguide/build_cache.html)
+
+----
+
+## Flakiness
+
+- Failing tests are _automatically_ rerun on CI
+- If the second run _passes_
+  - build is marked as successful
+  - GitHub project is checked whether the test is known to be flaky
+  - Otherwise, an issue to fix the test is created
+
+---
+
+<!-- .slide: data-background="./forest-red-green.jpg" -->
+
+# Lessons learned<!-- .element style="color:white; text-shadow: 1px 1px 5px black;" -->
+
+<a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:10px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@ralics?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Christopher Rusev"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:10px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Christopher Rusev</span></a>
+
+----
+
+## Question your beliefs!
+#### (at least occasionally 😉)
+
+The test pyramid is _not_ the right strategy for everyone.
+
+----
+
+## "Integration tests are too slow!"
+
+- Profile them!
+- Is it just the tests?
+- Or is it actually your application?
+
+----
+
+## "Testing asynchronous code is too hard"
+
+- Don't ever use _sleep_!
+- Use [Awaitility](http://www.awaitility.org/)
+- Spock's `PollingConditions`
+- `CompletableFuture`
+
+----
+
+## "don't mock things you don’t own"
+
+Unless there's no other way.
+
+
+----
+
+## "don't mock things"
+
+Unless that's the best way to test it.
+
+----
+
+## Which tests should I write?
+
+Use Kent Beck's test desiderata to make a conscious decision about which tests help you in being _productive_.
+
+----
+
+## Thanks!

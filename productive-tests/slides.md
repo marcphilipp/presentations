@@ -11,11 +11,12 @@ revealOptions:
         breaks: true
 ---
 
-<!-- .slide: data-background="./chess.jpg" -->
+<!-- .slide: data-background="./time-lapse.jpg" -->
 # Productive Tests<!-- .element style="color:white; text-shadow: 1px 1px 5px black;" -->
 ## Marc Philipp<!-- .element style="color:white; text-shadow: 1px 1px 5px black;" -->
 
-<a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:10px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@jeshoots?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from JESHOOTS.COM"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:10px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">JESHOOTS.COM</span></a>
+<a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:10px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@chuttersnap?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from chuttersnap"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:10px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">chuttersnap</span></a>
+
 ----
 
 ## About me
@@ -412,7 +413,7 @@ Structure-insensitive ↑, Inspiring ↑, Writable →, Fast&nbsp;↑, ...
 			.setTimeout(Duration.ofMinutes(2))
 			.setJavaHome(Helper.getJavaHome("8").orElseThrow(TestAbortedException::new))
 			.build()
-			.run();p
+			.run();
 	assumeFalse(result.isTimedOut(), () -> "tool timed out: " + result);
 	assertEquals(0, result.getExitCode());
 	assertTrue(result.getOutputLines("out").stream()
@@ -534,18 +535,9 @@ In order to write such readable integration tests, a lot of supporting code has 
 
 ---
 
-<!-- .slide: data-background="./forest-red-green.jpg" -->
+<!-- .slide: data-background="./silver-lining.jpg" -->
 
 # Lessons learned<!-- .element style="color:white; text-shadow: 1px 1px 5px black;" -->
-
-<a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:10px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@ralics?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Christopher Rusev"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:10px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Christopher Rusev</span></a>
-
-----
-
-## Question your beliefs!
-#### (at least occasionally 😉)
-
-The test pyramid is _not_ the right strategy for everyone.
 
 ----
 
@@ -557,7 +549,19 @@ The test pyramid is _not_ the right strategy for everyone.
 
 ----
 
-## "Testing asynchronous code is too hard"
+## "Writing integration tests is too hard!"
+
+_Use the right tools!_
+
+- WireMock / MockServer for HTTP calls
+- TestContainers for databases etc.
+- ...
+
+See [talk of Sandra Parsick](https://www.sandra-parsick.de/talk/testen-infra-jugda/) for details on all of the above and more.
+
+----
+
+## "Testing asynchronous code is too hard!"
 
 - Don't ever use _sleep_!
 - Use [Awaitility](http://www.awaitility.org/)
@@ -566,23 +570,35 @@ The test pyramid is _not_ the right strategy for everyone.
 
 ----
 
-## "don't mock things you don’t own"
+## "Don't mock things you don’t own!"
 
 Unless there's no other way.
 
 
 ----
 
-## "don't mock things"
+## "Don't mock things!"
 
 Unless that's the best way to test it.
 
 ----
 
+## "The test pyramid is always right!"
+
+The test pyramid is **_not_** the right strategy **_for everyone_**.
+
+----
+
 ## Which tests should I write?
 
-Use Kent Beck's test desiderata to make a conscious decision about which tests help you in being _productive_.
+Use criteria like Kent Beck's test desiderata to make a **_conscious decision_** about which tests help you in being **_productive_**.
+
+Be aware of the trade-offs!
 
 ----
 
 ## Thanks!
+
+**_Marc Philipp_**
+_[mail@marcphilipp.de](mailto:mail@marcphilipp.de)_
+_@marcphilipp on [GitHub](https://github.com/marcphilipp)/[Twitter](https://twitter.com/marcphilipp)_
